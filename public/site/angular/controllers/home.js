@@ -9,7 +9,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		accountService.checkCurrentUser(function(response){
 			if (response.confirmation == 'success')
 				$scope.profile = response.profile;
-
 			fetchPosts();
 		});
 	}
