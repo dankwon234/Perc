@@ -1,6 +1,6 @@
-var restService = angular.module('StripeServiceModule', ['ngResource']);
+var stripeService = angular.module('StripeServiceModule', ['ngResource']);
 
-restService.factory('StripeService', ['$resource', function($resource){
+stripeService.factory('StripeService', ['$resource', function($resource){
 	return $resource('/stripe/:resource/:id', {}, {
 		
 		query: { method:'GET', params:{}, isArray:false },
