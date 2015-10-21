@@ -11,6 +11,16 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 	$scope.credentials = {'email':'', 'password':'', 'name':''};
 	$scope.loading = false;
 
+	$scope.checkCurrentUser = function(){
+		accountService.checkCurrentUser(function(response){
+			if (response.confirmation == 'success')
+				$scope.profile = response.profile;
+
+			
+		});
+	}
+
+
 	
 	$scope.register = function(){
 		console.log('register called');
@@ -20,7 +30,8 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
                 alert(error.message);
 				return;
 			}
-			$scope.profile = {'firstName':'', 'lastName':'', 'email':'', 'password':''};
+
+			window.location.href = '/site/account';
 		});
 	}
 	
@@ -33,7 +44,7 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 				return;
 			}
 			
-			window.location.href = '/site/forum';
+			window.location.href = '/site/account';
 		});
 	}
 	
