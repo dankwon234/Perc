@@ -13,6 +13,11 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		});
 	}
 
+	// $scope.register = function(){
+	// 	console.log('register called');
+
+	// }
+
 	function fetchPosts(){
 		RestService.query({resource:'post', id:null, limit:'0'}, function(response){
 			if (response.confirmation != 'success')
