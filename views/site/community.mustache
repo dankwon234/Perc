@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="Perc" ng-controller="BaseController" >
+    <head>
+        {{>head}}
+    </head>
+
+
+    <body ng-controller="CommunityController" ng-init="init()">
+
+        {{>nav}}
+
+  
+
+        <div class="main-container">
+
+            <input ng-model="community.name" type="text" placeholder="Name">
+            <input ng-model="community.website" type="text" placeholder="Website"> 
+            <input ng-model="community.description" type="text" placeholder="Description">
+            <div style="width:100px; height:100px;"ng-model="community.image" ng-file-drop="onFileSelect($files, 'image', 'images')" class="uploadBox fileUpload"></div>
+                    <p class="filler" style="visibility: hidden"> hl </p><p class="uploadBox-text"style="font-family: GillSans; text-transform: uppercase; font-size: 11px;'">Drag and Drop Image Here</p>
+                    </div>
+            <input ng-model="community.password" type="password" placeholder="password">
+
+            <a class="btn btn-success btn-rounded" ng-click="createCommunity()" style="color:#fff"> Create </a> 
+
+
+            {{>footer}}
+
+        </div>
+        {{>scripts}}
+    </body>
+</html>
