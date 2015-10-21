@@ -8,6 +8,7 @@ var ProfileSchema = new mongoose.Schema({
 	email: {type:String, trim:true, lowercase:true, default:''},
 	bio: {type:String, trim:true, default:''},
 	image: {type:String, trim:true, default:''},
+	community: {type:String, default:''},
 	password: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
@@ -21,6 +22,7 @@ ProfileSchema.methods.summary = function() {
 		'email':this.email,
 		'bio':this.bio,
 		'image':this.image,
+		'community':this.community,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};

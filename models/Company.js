@@ -7,6 +7,7 @@ var CompanySchema = new mongoose.Schema({
 	description: {type:String, trim:true, default:''},
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
 	image: {type:String, trim:true, default:''},
+	community: {type:String, default:''},
 	password: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
@@ -19,6 +20,7 @@ CompanySchema.methods.summary = function() {
 		'description':this.description,
 		'url':this.url,
 		'image':this.image,
+		'community':this.community,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
