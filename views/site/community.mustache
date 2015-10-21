@@ -11,22 +11,25 @@
 
   
 
-        <div class="main-container">
-
+        <div class="container">
+    
             <input ng-model="community.name" type="text" placeholder="Name">
             <input ng-model="community.website" type="text" placeholder="Website"> 
             <input ng-model="community.description" type="text" placeholder="Description">
-            <div style="width:100px; height:100px;"ng-model="community.image" ng-file-drop="onFileSelect($files, 'image', 'images')" class="uploadBox fileUpload"></div>
+            <div style="background-color: #ddd; height:100px; width:100px;">
+                <div style="width:100px; height:100px; background-image:url(https://media-service.appspot.com/site/images/<% community.image %>?crop=240); background-size: contain; background-repeat: no-repeat;" ng-model="community.image" ng-file-drop="onFileSelect($files, 'image', 'images')" class="uploadBox fileUpload">
+                </div>
+            </div>
                     <p class="filler" style="visibility: hidden"> hl </p><p class="uploadBox-text"style="font-family: GillSans; text-transform: uppercase; font-size: 11px;'">Drag and Drop Image Here</p>
-                    </div>
+                    
             <input ng-model="community.password" type="password" placeholder="password">
 
             <a class="btn btn-success btn-rounded" ng-click="createCommunity()" style="color:#fff"> Create </a> 
-
+        </div>
 
             {{>footer}}
 
-        </div>
+
         {{>scripts}}
     </body>
 </html>
