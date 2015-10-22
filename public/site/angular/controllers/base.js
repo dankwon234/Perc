@@ -15,9 +15,17 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 		accountService.checkCurrentUser(function(response){
 			if (response.confirmation == 'success')
 				$scope.profile = response.profile;
-
-			
 		});
+	}
+
+	$scope.updateProfile = function(){
+		accountService.updateProfile($scope.profile, function(response){
+			if (response.confirmation == 'success')
+				$scope.profile = response.profile;
+
+			console.log('update profile: '+JSON.stringify($scope.profile));
+		});
+
 	}
 
 
