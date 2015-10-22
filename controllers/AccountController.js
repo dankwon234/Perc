@@ -64,7 +64,8 @@ this.handleLogin = function(req, res, pkg){
 }
 
 this.handleLogout = function(req, res, pkg){
-
+	req.session.reset();
+  	res.json({'confirmation':'success'});
 }
 
 
