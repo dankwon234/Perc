@@ -34,6 +34,11 @@ router.get('/:resource', function(req, res, next) {
 		return;
 	}
 
+	if (req.params.resource == 'logout'){
+		accountController.handleLogout(req, res, null);
+		return;
+	}
+
 	var controller = controllers[req.params.resource];
 	if (controller == null){
 		res.send({'confirmation':'fail', 'message':'Invalid Resource: '+req.params.resource});
@@ -57,12 +62,6 @@ router.get('/:resource/:id', function(req, res, next) {
 
 router.post('/:resource', function(req, res, next) {
 	
-	// if (req.params.resource == 'email'){
-	// 	var recipients = req.body.recipients;
-	// 	if (recipients == null){
-	// 		res.json({'confirmation':'fail','message':'Missing recipients parameter.'});
-	// 		return;
-	// 	}
 
 	// 	if (recipients.length == 0){
 	// 		res.json({'confirmation':'fail','message':'There are no recipients.'});
@@ -97,6 +96,11 @@ router.post('/:resource', function(req, res, next) {
 	// 	return;
 	// }
 
+
+	if (req.params.resource == 'login'){
+		accountController.handleLogin(req, res, null);
+		return;
+	}
 
 	
 	var controller = controllers[req.params.resource];
