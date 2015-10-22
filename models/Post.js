@@ -8,6 +8,7 @@ var PostSchema = new mongoose.Schema({
  	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	numComments: {type:Number, default:0},
+	tags: {type:Array, default:[]},
 	thread: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
@@ -22,6 +23,7 @@ PostSchema.methods.summary = function() {
 		'link':this.link,
 		'title':this.title,
 		'thread':this.thread,
+		'tags':this.tags,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
