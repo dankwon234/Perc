@@ -2,14 +2,15 @@ var baseCtr = angular.module('BaseModule', []);
 
 baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
 	$scope['generalService'] = generalService;
+	$scope.credentials = {'email':'', 'password':'', 'name':''};
+	$scope.loading = false;
 	$scope.profile = {
+		'id':null,
 		'firstName': '',
 		'lastName': '',
 		'email': '',
 		'password': ''
 	}
-	$scope.credentials = {'email':'', 'password':'', 'name':''};
-	$scope.loading = false;
 
 	$scope.checkCurrentUser = function(){
 		accountService.checkCurrentUser(function(response){
@@ -32,6 +33,7 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 	
 	$scope.register = function(){
 		console.log('register called');
+		delete $scope.profile['id'];
 		accountService.register($scope.profile, function(response, error){
 			console.log(JSON.stringify(response));
 			if (error != null){
@@ -56,6 +58,21 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 		});
 	}
 	
+  	$scope.profileImageSelected = function(files, property, media){
+	    uploadService.uploadFiles({'files':files, 'media':media}, function(response, error){
+	    	if (error != null){
+	    		alert(error.message);
+	    		return;
+	    	}
+
+	    	if (media != 'images')
+	    		return;
+
+		    var image = response.image;
+		    $scope.profile['image'] = image.id;
+		    $scope.updateProfile();
+	    });
+  	}
 	
 	
 	
