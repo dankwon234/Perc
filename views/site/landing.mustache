@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="Perc" ng-controller="BaseController">
+    <head>
+        {{>head}}
+    </head>
+
+    <body>
+        {{>modals}}
+        {{>nav}}
+
+
+        <div class="main-container">
+            <section class="image-edge bg-secondary">
+                <div class="col-md-6 col-sm-4 p0">
+                    <img alt="Screenshot" class="mb-xs-24" src="/site/img/phone1.png" />
+                </div>
+                <div class="container">
+                    <div class="col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-1 v-align-transform right">
+                        <h3 class="uppercase mb40 mb-xs-24">Launching Soon</h3>
+                        <p>
+                            We'll be launching our new site in the coming weeks. Hit the form below to get notified as we launch. Thanks for your interest!
+                        </p>
+                        <form class="halves form-newsletter" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+                            <input class="mb16 validate-required validate-email signup-email-field" type="text" placeholder="Email Address" name="email" />
+                            <input class="mb16" type="submit" value="Notify Me" />
+                        </form>
+                    </div>
+                </div>
+                <!--end of container-->
+
+            </section>
+            {{>footer}}
+
+        </div>
+        {{>scripts}}
+
+
+    </body>
+</html>
