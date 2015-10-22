@@ -9,7 +9,7 @@ var ProfileSchema = new mongoose.Schema({
 	email: {type:String, trim:true, lowercase:true, default:''},
 	bio: {type:String, trim:true, default:''},
 	image: {type:String, trim:true, default:''},
-	community: {type:String, default:''},
+	communities: {type:Array, default:[]},
 	password: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
