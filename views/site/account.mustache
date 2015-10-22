@@ -5,189 +5,111 @@
     </head>
 
 
-    <body>
+    <body ng-cloak>
         {{>modals}}
-
-
         {{>nav}}
 
         <div class="main-container">
 
-
-            <section class="bg-secondary">
+            <section class="page-title page-title-3 image-bg overlay parallax">
+                <div class="background-image-holder">
+                    <img alt="Background Image" class="background-image" src="/site/img/home5.jpg" />
+                </div>
                 <div class="container">
-                    <div class="col-md-9 col-md-push-3">
-                        <div class="row masonry-loader">
-                            <div class="col-sm-12 text-center">
-                                <div class="spinner"></div>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <img style="width:96px;margin-top:6px;margin-bottom:12px;border-radius:48px" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=360" />
+                            <h3 class="uppercase mb12"><% profile.firstName %> <% profile.lastName %></h3>
                         </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+                <ol class="breadcrumb breadcrumb-2">
+                    <li class="active">WeWork</li>
+                    <li class="active">The Full Stack</li>
+                    <li ng-show="profile.title.length > 0" class="active"><% profile.title %></li>
+                </ol>
+            </section>
 
-                        <div class="row" style="padding:16px">
-                            <div class="text-center">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
+            <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
+                <div class="row-fluid">
+                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:2100px">
+                        <sidebar></sidebar>
+                    </div>
+
+
+                    <div class="col-md-9 mb-xs-24">
+                            <div class="tabbed-content text-tabs" style="padding:96px">
+                                <ul class="tabs">
+                                    <li class="active">
+                                        <div class="tab-title">
+                                            <span>Profile</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <h4>Manage Your Profile Details</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.firstName" type="text" placeholder="First Name" class="form-control">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.lastName" type="text" placeholder="Last Name" class="form-control">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.email" type="text" placeholder="Email" class="form-control">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.title" type="text" placeholder="Title (e.g. 'CEO')" class="form-control">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.password" type="password" placeholder="Password" class="form-control">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <textarea ng-blur="updateProfile()" ng-model="profile.bio" style="height:120px" class="form-control" placeholder="About me"></textarea>
+                                                    <div ng-file-drop="profileImageSelected($files, 'image', 'images')" style="width:100%;height:96px;background:#f9f9f9;border:1px solid #ddd;text-align:center;padding:12px">
+                                                        <img align="left" style="width:72px" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=360" />
+                                                        Drag &amp; Drop Image to Change
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
                                     <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
+                                        <div class="tab-title">
+                                            <span>Posts</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <p>
+                                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tab-title">
+                                            <span>Culture</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <p>
+                                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tab-title">
+                                            <span>Method</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <p>
+                                                Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                                            </p>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <!--end of row-->
-
-
-                        <div class="row masonry mb40">
-
-                            <div class="col-sm-6 post-snippet masonry-item">
-                                <div style="width:90%;margin:auto;background:url('https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s460-c');height:120px">
-                                    <div style="width:100%;height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-
-                                </div>
-                                <div class="inner">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off an excellent masonry blog layout.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                            <div class="col-sm-6 post-snippet masonry-item">
-                                <div style="width:90%;margin:auto;background:url('https://lh3.googleusercontent.com/4zW8u86WT_YBHuXS_PkKNobQoJnDmkvwaw_dos6X_7pY35UVTnF1iuiNn-f93XZWn6fYdXjjLuEvTf1ltZPJKQ=s460-c');height:120px">
-                                    <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/4zW8u86WT_YBHuXS_PkKNobQoJnDmkvwaw_dos6X_7pY35UVTnF1iuiNn-f93XZWn6fYdXjjLuEvTf1ltZPJKQ=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-
-                                </div>
-                                <div class="inner">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off an excellent masonry blog layout.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                            <div class="col-sm-6 post-snippet masonry-item">
-                                <div style="width:90%;margin:auto;background:url('https://lh3.googleusercontent.com/aZcphlsjyW-efd6ZUhTJDz1z5F-G3BaMlKFb358WFLat2rDEO1btrvlL2CG8ifcop1L8dKYtWGteQOWVaRnk=s460-c');height:120px">
-                                    <div style="width:100%;height:120px;background:rgba(0,0,0,0.7);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/aZcphlsjyW-efd6ZUhTJDz1z5F-G3BaMlKFb358WFLat2rDEO1btrvlL2CG8ifcop1L8dKYtWGteQOWVaRnk=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-
-                                </div>
-                                <div class="inner">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                            <div class="col-sm-6 post-snippet masonry-item">
-                                <div style="width:90%;margin:auto;background:url('/site/img/blog-single-2.jpg');height:120px">
-                                    <div style="width:100%;height:120px;background:rgba(0,0,0,0.7);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-
-                                </div>
-                                <div class="inner">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off an excellent masonry blog layout.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>                                    
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                        </div>
-                        <!--end of row-->
-
-                    </div>
-                    <!--end of 9 col-->
-
-
-                    <div class="col-md-3 col-md-pull-9 hidden-sm">
-                        <div class="widget">
-                            <div style="text-align:center;padding-top:48px">
-                                <img style="width:120px;margin-bottom:20px;" src="/site/img/iconRound.png" />
-                                <h6 class="title">Welcome To Perc</h6>
-                            </div>
-                            <hr>
-                            <p>
-                                Perc connects people offering services to those in needs of services.
-                                A curated community, Perc brings you the best opportunities if you are looking for work
-                                and the best candidates if you need to hire someone.
-                            </p>
-                        </div>
-                        <!--end of widget-->
-                        <div class="widget">
-                            <div style="text-align:center;padding-top:24px">
-                                <h6 class="title">Categories</h6>
-                            </div>
-                            <hr>
-                            <ul>
-                                <li><button class="btn btn-category">Events</a></button>
-                                <li><button class="btn btn-category">Community</a></button>
-                                <li><button class="btn btn-category">Business Opportunities</a></button>
-                            </ul>
-                        </div>
-                        <!--end of widget-->
-
-                        <div class="widget">
-                            <div style="text-align:center;padding-top:24px">
-                                <h6 class="title">Join Our Beta</h6>
-                            </div>
-                            <hr>
-                            <p>
-                                Perc is currently in beta and we are looking for people to test the platform. Specifically,
-                                if you provide a service, we welcome you to join the beta test. In return, you will be able to use Perc for free for one year after we launch the premium service.
-                            </p>
-                            <a style="width:100%" class="btn btn-lg btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Join</a>
-                        </div>
-                        <!--end of widget-->
-
+                            <!--end of text tabs-->
 
 
                     </div>
-                    <!--end of sidebar-->
+
+
                 </div>
-                <!--end of container-->
+
             </section>
 
 
