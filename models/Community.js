@@ -10,6 +10,7 @@ var CommunitySchema = new mongoose.Schema({
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
 	image: {type:String, trim:true, default:''},
 	numMembers: {type:Number, default:0},
+	members: {type:Array, default:[]},
 	password: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
@@ -24,7 +25,7 @@ CommunitySchema.methods.summary = function() {
 		'description':this.description,
 		'url':this.url,
 		'image':this.image,
-		'numMembers':this.numMembers,
+		'members':this.members,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
