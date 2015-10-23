@@ -84,6 +84,14 @@ app.directive('sidebar', function() {
   };
 });
 
+app.directive('communitysidebar', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      templateUrl: "/site/angular/directives/communitysidebar.html"
+  };
+});
+
 app.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);
