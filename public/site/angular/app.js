@@ -3,6 +3,7 @@ var modules = [
   'BaseModule',
 	'HomeModule',
   'CommunityModule',
+  'CommunitiesModule',
 	'GeneralServiceModule',
 	'RestServiceModule',
 	'UploadServiceModule',
