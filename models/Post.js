@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
 	text: {type:String, trim:true, default:''},
 	title: {type:String, trim:true, default:''},
+	featured: {type:String, trim:true, default:'no'},
 	type: {type:String, trim:true, lowercase:true, default:''}, // job, event, etc
  	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
@@ -18,6 +19,7 @@ PostSchema.methods.summary = function() {
 	var summary = {
 		'profile':this.profile,
 		'text':this.text,
+		'featured':this.featured,
 		'type':this.type,
 		'numComments':this.numComments,
 		'link':this.link,
