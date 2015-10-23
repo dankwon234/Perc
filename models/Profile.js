@@ -26,7 +26,7 @@ ProfileSchema.methods.summary = function() {
 		'email':this.email,
 		'bio':this.bio,
 		'image':this.image,
-		'community':this.community,
+		'communities':this.communities,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
