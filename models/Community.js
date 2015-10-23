@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 
 var CommunitySchema = new mongoose.Schema({
 	name: {type:String, trim:true, default:''},
-	city: {type:String, trim:true, default:''},
-	state: {type:String, trim:true, default:''},
+	city: {type:String, trim:true, default:'new york'},
+	state: {type:String, trim:true, default:'ny'},
 	website: {type:String, trim:true, default:''},
 	description: {type:String, trim:true, default:''},
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
