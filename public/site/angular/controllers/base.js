@@ -29,8 +29,6 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 
 	}
 
-
-	
 	$scope.register = function(){
 		console.log('register called');
 		delete $scope.profile['id'];
@@ -41,7 +39,7 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 				return;
 			}
 
-			window.location.href = '/site/account';
+			window.location.href = '/site/communities';
 		});
 	}
 	
