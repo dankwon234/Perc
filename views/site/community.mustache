@@ -7,24 +7,72 @@
 
     <body ng-controller="CommunityController" ng-init="init()">
 
+        <!-- Community Modal -->
+        <div class="modal fade" id="communityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div style="width:35%;min-width:360px;margin-left:auto;margin-right:auto;" class="modal-dialog">
+              <button type="button" class="close" data-dismiss="modal" style="margin-right:12px;margin-top:12px">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
+              <div style="background:rgba(249, 249, 249, 0.98);border:1px solid #ddd;padding:32px 16px 0px 16px;min-height:300px;text-align:center">
+                    <h3 style="margin-bottom:12px;margin-top:0px;text-align:center"><% selectedCommunity.name %></h3>
+                    <div ng-file-drop="onFileSelect($files, 'selectedCommunity', 'images')" style="width:60%;background:#ddd;height:84px;margin:auto;padding:6px">
+                        <img align="left" style="width:72px;margin-bottom:24px" ng-src="https://media-service.appspot.com/site/images/<% selectedCommunity.image %>?crop=240" />
+
+                    </div>
+                    <hr />
+
+                    <div class="contact-form" style="margin-top:20px;width:90%;margin-left:auto;margin-right:auto">
+                        <input style="background:#fff" ng-model="selectedCommunity.name" type="text" placeholder="Name" class="form-control">
+
+                        <input style="background:#fff" ng-model="selectedCommunity.website" type="text" placeholder="Website" class="form-control">
+
+                        <input style="background:#fff" ng-model="selectedCommunity.password" type="text" placeholder="Password" class="form-control">
+
+                    </div>
+                    <div class="row" style="background:#fff;border-top:1px solid #ddd;margin-top:36px;padding-top:24px">
+                        <button style="background:#fff" data-dismiss="modal" type="submit" class="btn btn-large" ng-click="updateSelectedCommunity()">Update</button>
+                        <button style="background:#fff" data-dismiss="modal" type="submit" class="btn btn-large" ng-click="deleteSelectedCommunity()">Delete</button>
+                    </div>
+              </div>
+                
+          </div>
+        </div>            
+
         {{>nav}}
 
-  
+        <div class="container" style="padding:64px">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>New Community</h3>
+                    <input ng-model="community.name" type="text" placeholder="Name">
+                    <input ng-model="community.website" type="text" placeholder="Website"> 
+                    <input ng-model="community.description" type="text" placeholder="Description">
+                    <input ng-model="community.password" type="password" placeholder="password">
 
-        <div class="container">
-    
-            <input ng-model="community.name" type="text" placeholder="Name">
-            <input ng-model="community.website" type="text" placeholder="Website"> 
-            <input ng-model="community.description" type="text" placeholder="Description">
-            <div style="background-color: #ddd; height:100px; width:100px;">
-                <div style="width:100px; height:100px; background-image:url(https://media-service.appspot.com/site/images/<% community.image %>?crop=240); background-size: contain; background-repeat: no-repeat;" ng-model="community.image" ng-file-drop="onFileSelect($files, 'image', 'images')" class="uploadBox fileUpload">
+                    <div style="background-color:#ddd;height:100px;width:100px;">
+                        <div style="width:100px; height:100px; background-image:url(https://media-service.appspot.com/site/images/<% community.image %>?crop=240); background-size: contain; background-repeat: no-repeat;" ng-model="community.image" ng-file-drop="onFileSelect($files, 'community', 'images')" class="uploadBox fileUpload">
+                        </div>
+                    </div>
+                    <p class="uploadBox-text"style="font-family: GillSans; text-transform: uppercase; font-size: 11px;'">Drag and Drop Image Here</p>
+
+                    <a class="btn btn-success btn-rounded" ng-click="createCommunity()" style="color:#fff"> Create </a> 
                 </div>
-            </div>
-                    <p class="filler" style="visibility: hidden"> hl </p><p class="uploadBox-text"style="font-family: GillSans; text-transform: uppercase; font-size: 11px;'">Drag and Drop Image Here</p>
-                    
-            <input ng-model="community.password" type="password" placeholder="password">
 
-            <a class="btn btn-success btn-rounded" ng-click="createCommunity()" style="color:#fff"> Create </a> 
+                <div class="col-md-6">
+                    <h3>Current Communities</h3>
+                    <ol style="padding-left:16px">
+                        <li ng-repeat="community in communities track by $index">
+                            <a data-toggle="modal" data-target="#communityModal" ng-click="selectCommunity(community)" href="#"><% community.name %></a>
+                        </li>
+
+                    </ol>
+
+
+                </div>
+
+
+            </div>
+    
         </div>
 
             {{>footer}}
