@@ -5,6 +5,7 @@ var PostSchema = new mongoose.Schema({
 	text: {type:String, trim:true, default:''},
 	title: {type:String, trim:true, default:''},
 	featured: {type:String, trim:true, default:'no'},
+	communities: {type:Array, default:[]},
 	type: {type:String, trim:true, lowercase:true, default:''}, // job, event, etc
  	link: {type:String, trim:true, lowercase:true, default:''},
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
@@ -21,6 +22,7 @@ PostSchema.methods.summary = function() {
 		'text':this.text,
 		'featured':this.featured,
 		'type':this.type,
+		'communities':this.communities,
 		'numComments':this.numComments,
 		'link':this.link,
 		'title':this.title,
