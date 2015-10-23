@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 
 var CommunitySchema = new mongoose.Schema({
 	name: {type:String, trim:true, default:''},
+	city: {type:String, trim:true, default:''},
+	state: {type:String, trim:true, default:''},
 	website: {type:String, trim:true, default:''},
 	description: {type:String, trim:true, default:''},
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
@@ -15,6 +17,8 @@ var CommunitySchema = new mongoose.Schema({
 CommunitySchema.methods.summary = function() {
 	var summary = {
 		'name':this.name,
+		'city':this.city,
+		'state':this.state,
 		'website':this.website,
 		'description':this.description,
 		'url':this.url,
