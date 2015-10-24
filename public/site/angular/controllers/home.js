@@ -5,8 +5,9 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':''};
 	$scope.posts = null;
 	$scope.selectedPost = null;
+	$scope.reply = {'text':'', 'subject':''};
 
-	
+
 	$scope.init = function(){
 		console.log('HomeController: INIT');
 		accountService.checkCurrentUser(function(response){
@@ -90,8 +91,19 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	    });
   	}
 
+  	$scope.selectPost = function(post){
+		$scope.selectedPost = post;
+
+  	}
+
   	$scope.replyToPost = function(){
-		RestService.post({resource:'reply', id:null}, $scope.post, function(response){
+		if ($scope.profile.id == null)
+			return;
+
+		$scope.reply['profile'] = $scope.profile.id;
+		$scope.reply['subject'] = $scope.selectedPost.title;
+
+		RestService.post({resource:'reply', id:null}, $scope.reply, function(response){
 			console.log('REPLY TO POST: '+JSON.stringify(response));
 			if (response.confirmation != 'success')
 				return;

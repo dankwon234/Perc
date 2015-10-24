@@ -48,7 +48,7 @@
                                     <hr>
                                     <p><% post.text %></p>
                                     <a ng-if="currentCommunity == null" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                    <a ng-if="currentCommunity != null" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
+                                    <a ng-if="currentCommunity != null" ng-click="selectPost(post)" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
                                 </div>
                             </div>
                             <!--end of snippet-->
