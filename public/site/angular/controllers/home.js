@@ -4,6 +4,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.currentCommunity = null;
 	$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':''};
 	$scope.posts = null;
+	$scope.selectedPost = null;
 
 	
 	$scope.init = function(){
@@ -87,6 +88,16 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		    var image = response.image;
 		    $scope.post['image'] = image.id;
 	    });
+  	}
+
+  	$scope.replyToPost = function(){
+		RestService.post({resource:'reply', id:null}, $scope.post, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			console.log('REPLY TO POST: '+JSON.stringify(response));
+		});
+
   	}
 	
 	
