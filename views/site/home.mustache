@@ -28,17 +28,17 @@
 
                         <div style="padding:64px 48px 0px 12px">
                             <h3 style="margin-left:12px;">Business Opportunities</h3>
-                            <a ng-show="currentCommunity != null" class="btn btn-lg btn-rounded" href="#">Post</a>
+                            <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
                         </div>
 
 
                         <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
 
-                            <div class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s460-c');height:120px">
+                            <div ng-repeat="post in posts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
+                                <div style="margin:auto;background:url('https://media-service.appspot.com/site/images/<% post.image %>?crop=320');height:120px">
                                     <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
+                                        <img align="left" style="width:120px;margin-right:12px" src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
+                                        <h4 style="color:#fff;"><% post.title %></h4>
                                     </div>
                                 </div>
                                 <div class="inner" style="width:100%">
@@ -47,76 +47,12 @@
                                         <span class="inline-block mb16">September 23, 2015</span>
                                     </a>
                                     <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
+                                    <p><% post.text %></p>
                                     <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
                                 </div>
                             </div>
                             <!--end of snippet-->
 
-                            <div class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('https://lh3.googleusercontent.com/4zW8u86WT_YBHuXS_PkKNobQoJnDmkvwaw_dos6X_7pY35UVTnF1iuiNn-f93XZWn6fYdXjjLuEvTf1ltZPJKQ=s460-c');height:120px">
-                                    <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/4zW8u86WT_YBHuXS_PkKNobQoJnDmkvwaw_dos6X_7pY35UVTnF1iuiNn-f93XZWn6fYdXjjLuEvTf1ltZPJKQ=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-                                </div>
-                                <div class="inner" style="width:100%">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off an excellent masonry blog layout.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                            <div class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('https://lh3.googleusercontent.com/aZcphlsjyW-efd6ZUhTJDz1z5F-G3BaMlKFb358WFLat2rDEO1btrvlL2CG8ifcop1L8dKYtWGteQOWVaRnk=s460-c');height:120px">
-                                    <div style="height:120px;background:rgba(0,0,0,0.7);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/aZcphlsjyW-efd6ZUhTJDz1z5F-G3BaMlKFb358WFLat2rDEO1btrvlL2CG8ifcop1L8dKYtWGteQOWVaRnk=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-                                </div>
-                                <div class="inner" style="width:100%">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                </div>
-                            </div>
-                            <!--end of snippet-->
-
-                            <div class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('/site/img/blog-single-2.jpg');height:120px">
-                                    <div style="height:120px;background:rgba(0,0,0,0.7);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://lh3.googleusercontent.com/Vf4pHsQ9yIIpWQdlkfwopFlrBWMhdc28NCKov1VkoOIl0q7CPSwz5Hy_j6C1b0y4Kd6oIUD4tecCcTuoJiSm=s260-c" />
-                                        <h4 style="color:#fff;">Reqeqfa</h4>
-                                    </div>
-                                </div>
-                                <div class="inner" style="width:100%">
-                                    <a href="#">
-                                        <h5 class="mb0 mt16">A simple image post to start off an excellent masonry blog layout.</h5>
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                                    </p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>                                    
-                                </div>
-                            </div>
-                            <!--end of snippet-->
 
                         </div>
                         <!--end of row-->
