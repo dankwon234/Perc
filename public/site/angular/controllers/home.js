@@ -37,7 +37,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
 
 	function fetchFeaturedPosts(){
-		RestService.query({resource:'post', id:null, limit:'0'}, function(response){
+		RestService.query({resource:'post', id:null, featured:'yes'}, function(response){
 			if (response.confirmation != 'success')
 				return;
 			
