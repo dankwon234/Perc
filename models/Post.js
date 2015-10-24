@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
 	text: {type:String, trim:true, default:''},
 	title: {type:String, trim:true, default:''},
+	image: {type:String, trim:true, default:''},
+	contact: {type:String, trim:true, default:''}, // email, phone number
 	featured: {type:String, trim:true, default:'no'},
 	communities: {type:Array, default:[]},
 	type: {type:String, trim:true, lowercase:true, default:''}, // job, event, etc
@@ -22,10 +24,12 @@ PostSchema.methods.summary = function() {
 		'text':this.text,
 		'featured':this.featured,
 		'type':this.type,
+		'contact':this.contact,
 		'communities':this.communities,
 		'numComments':this.numComments,
 		'link':this.link,
 		'title':this.title,
+		'image':this.image,
 		'thread':this.thread,
 		'tags':this.tags,
 		'timestamp':this.timestamp,
