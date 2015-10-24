@@ -45,7 +45,8 @@
                             <div class="inner">
                                 <br />
                                 <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10">Website</span></a>
-                                <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd" class="mb10"><% community.city.toUpperCase() %></span></a>
+                                <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% community.city.toUpperCase() %></span></a>
+                                <a ng-show="community.members.length>10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.members.length %> Members</span></a>
 
                                 <br /><br /><hr>
                                 <p><% community.description %></p>
