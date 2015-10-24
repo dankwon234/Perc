@@ -51,22 +51,36 @@
 
         <!-- Post Job Up Modal -->
         <div class="modal fade" id="postJobModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div style="width:35%;min-width:360px;margin-left:auto;margin-right:auto;" class="modal-dialog">
+          <div style="width:70%;min-width:360px;margin-left:auto;margin-right:auto;" class="modal-dialog">
               <button type="button" class="close" data-dismiss="modal" style="margin-right:12px;margin-top:12px">
                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
               </button>
               <div style="background:rgba(249, 249, 249, 0.98);border:1px solid #ddd;padding:32px 16px 0px 16px;min-height:300px;text-align:center">
                     <h3 style="margin-bottom:12px;margin-top:0px;text-align:center">Post Job</h3>
                     <hr />
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="contact-form" style="margin-top:20px;width:94%;margin-left:auto;margin-right:auto">
+                            <input style="background:#fff" ng-model="post.title" type="text" placeholder="Title" class="form-control">
+                            <input style="background:#fff" ng-model="post.contact" type="text" placeholder="Contact Info (email or phone)" class="form-control">
+                            <div ng-file-drop="uploadImage($files, 'post', 'images')" style="background:#ddd;height:84px;padding:6px">
+                              <img ng-show="post.image.length > 0" align="left" style="width:72px" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
+                              Drag &amp; Drop Image Here
+                            </div>
+                        </div>
+                      </div>
 
-                    <div class="contact-form" style="margin-top:20px;width:90%;margin-left:auto;margin-right:auto">
-                        <input style="background:#fff" ng-model="profile.firstName" type="text" placeholder="First Name" class="form-control">
-                        <input style="background:#fff" ng-model="profile.lastName" type="text" placeholder="Last Name" class="form-control">
-                        <input style="background:#fff" ng-model="profile.email" type="text" placeholder="Email" class="form-control">
-                        <input style="background:#fff" ng-model="profile.password" type="password" placeholder="Password" class="form-control">
+                      <div class="col-md-6">
+                        <div class="contact-form" style="margin-top:20px;width:94%;margin-left:auto;margin-right:auto">
+                            <textarea style="background:#fff;border:1px solid #ddd;height:232px" ng-model="post.text" placeholder="Description"></textarea>
+                        </div>
+                      </div>
+
+
                     </div>
-                    <div class="row" style="background:#fff;border-top:1px solid #ddd;margin-top:36px;padding-top:24px">
-                        <button style="background:#fff" data-dismiss="modal" type="submit" class="btn btn-large" ng-click="register()">Sign Up</button>
+
+                    <div class="row" style="background:#fff;border-top:1px solid #ddd;margin-top:0px;padding-top:24px">
+                        <button style="background:#fff" data-dismiss="modal" type="submit" class="btn btn-large" ng-click="createPost()">Create Post</button>
                     </div>
               </div>
                 
