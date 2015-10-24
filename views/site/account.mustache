@@ -53,12 +53,12 @@
                                                     <input ng-blur="updateProfile()" ng-model="profile.firstName" type="text" placeholder="First Name" class="form-control">
                                                     <input ng-blur="updateProfile()" ng-model="profile.lastName" type="text" placeholder="Last Name" class="form-control">
                                                     <input ng-blur="updateProfile()" ng-model="profile.email" type="text" placeholder="Email" class="form-control">
-                                                    <input ng-blur="updateProfile()" ng-model="profile.title" type="text" placeholder="Title (e.g. 'CEO')" class="form-control">
+                                                    <input ng-blur="updateProfile()" ng-model="profile.title" type="text" placeholder="Title (e.g. 'Graphic Designer')" class="form-control">
                                                     <input ng-blur="updateProfile()" ng-model="profile.password" type="password" placeholder="Password" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <textarea ng-blur="updateProfile()" ng-model="profile.bio" style="height:120px" class="form-control" placeholder="About me"></textarea>
+                                                    <textarea ng-blur="updateProfile()" ng-model="profile.bio" style="height:198px;border:1px solid #ddd" placeholder="About me"></textarea>
                                                     <div ng-file-drop="profileImageSelected($files, 'image', 'images')" style="width:100%;height:96px;background:#f9f9f9;border:1px solid #ddd;text-align:center;padding:12px">
                                                         <img ng-show="profile.image.length > 0" align="left" style="width:72px" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=360" />
                                                         Drag &amp; Drop Profile Image to Change
