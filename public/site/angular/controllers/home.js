@@ -42,7 +42,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			console.log('RECENT POSTS == '+JSON.stringify(response));
 		});
 	}
 
@@ -52,7 +51,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			console.log('COMMUNITY POSTS == '+JSON.stringify(response));
 		});
 	}
 
