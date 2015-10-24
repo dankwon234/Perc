@@ -102,6 +102,10 @@ router.post('/:resource', function(req, res, next) {
 		return;
 	}
 
+	if (req.params.resource == 'reply'){
+		postController.replyToPost(req, res, null);
+		return;
+	}
 	
 	var controller = controllers[req.params.resource];
 	if (controller == null){

@@ -55,6 +55,26 @@ this.handlePost = function(req, res, pkg){
 }
 
 
+this.replyToPost = function(req, res, pkg){
+	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+	sendgrid.send({
+		to:       'dennykwon2@gmail.com',
+		from:     'info@thegridmedia.com',
+		subject:  'Reply To Post',
+		text:     'This is a reply to post test.'
+	}, function(err, json) {
+		if (err) {
+			res.json({'confirmation':'fail', 'message':err.message});
+			return;
+		}
+
+		res.json({'confirmation':'success', 'message':'Thanks! We will be in touch with you shortly about the workshop.', 'profile':profile.summary()});
+	});
+
+
+}
+
+
 // - - - - - - - - - - - - - - - - - - - - PUT HANDLER - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 this.handlePut = function(req, res, pkg){
