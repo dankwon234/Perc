@@ -73,7 +73,7 @@ this.replyToPost = function(req, res, pkg){
 			return;
 		}
 
-		res.json({'confirmation':'success', 'message':'Thanks! We will be in touch with you shortly about the workshop.'});
+		res.json({'confirmation':'success', 'message':'Your message has been sent!'});
 	});
 
 
