@@ -31,7 +31,6 @@
                             <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
                         </div>
 
-
                         <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
 
                             <div ng-repeat="post in posts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
@@ -44,11 +43,12 @@
                                 <div class="inner" style="width:100%;">
                                     <br />
                                     <a href="#">
-                                        <span class="inline-block mb16">September 23, 2015</span>
+                                        <span class="inline-block mb16"><% generalService.formattedDate(post.timestamp) %></span>
                                     </a>
                                     <hr>
                                     <p><% post.text %></p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
+                                    <a ng-if="currentCommunity == null" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
+                                    <a ng-if="currentCommunity != null" class="btn btn-sm btn-rounded" href="/site/post/<% post.id %>">Learn More</a>
                                 </div>
                             </div>
                             <!--end of snippet-->
