@@ -92,10 +92,10 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
   	$scope.replyToPost = function(){
 		RestService.post({resource:'reply', id:null}, $scope.post, function(response){
+			console.log('REPLY TO POST: '+JSON.stringify(response));
 			if (response.confirmation != 'success')
 				return;
 			
-			console.log('REPLY TO POST: '+JSON.stringify(response));
 		});
 
   	}
