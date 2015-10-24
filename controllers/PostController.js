@@ -56,12 +56,17 @@ this.handlePost = function(req, res, pkg){
 
 
 this.replyToPost = function(req, res, pkg){
+
+	var reply = req.body;
+
 	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 	sendgrid.send({
 		to:       'dennykwon2@gmail.com',
-		from:     'info@thegridmedia.com',
-		subject:  'Reply To Post',
-		text:     'This is a reply to post test.'
+		from:     'getpercs@gmail.com',
+		fromname: 'PERC',
+		cc: 	  'dan.kwon234@gmail.com',
+		subject:  reply.subject,
+		text:     reply.text
 	}, function(err, json) {
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
