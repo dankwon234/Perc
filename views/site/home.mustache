@@ -46,7 +46,7 @@
                                         <span class="inline-block mb16"><% generalService.formattedDate(post.timestamp) %></span>
                                     </a>
                                     <hr>
-                                    <p><% post.text %></p>
+                                    <p style="height:180px"><% post.text %></p>
                                     <a ng-if="currentCommunity == null" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
                                     <a ng-if="currentCommunity != null" ng-click="selectPost(post)" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
                                 </div>
