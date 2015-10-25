@@ -61,7 +61,7 @@
                             <div class="text-center">
                                 <ul class="pagination" style="margin-top:36px">
                                     <li ng-repeat="page in pages track by $index">
-                                        <a ng-click="loadVisiblePosts(page)" href=""><% $index+1 %></a>
+                                        <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
                                     </li>
                                 </ul>
                             </div>

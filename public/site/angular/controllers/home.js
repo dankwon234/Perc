@@ -46,7 +46,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			loadVisiblePosts(0);
+			$scope.loadVisiblePosts(0);
 			paginate();
 		});
 	}
@@ -57,13 +57,12 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			loadVisiblePosts(0);
+			$scope.loadVisiblePosts(0);
 			paginate();
 		});
 	}
 
-	function loadVisiblePosts(start){
-		var index = start/4;
+	$scope.loadVisiblePosts = function(index){
 		console.log('loadVisiblePosts: '+index);
 		var max = index+4;
 		if (max >= $scope.posts.length)
