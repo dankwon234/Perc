@@ -26,10 +26,24 @@
                             </div>
                         </div>
 
+
                         <div style="padding:64px 48px 0px 12px">
                             <h4 style="margin-left:12px;">Business Opportunities</h4>
                             <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
                         </div>
+
+                        <div ng-show="pages.length > 0" class="row" style="padding:0px;">
+                            <div class="text-center">
+                                <ul class="pagination" style="margin-top:0px;">
+                                    <li ng-repeat="page in pages track by $index">
+                                        <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end of row-->
+
+
 
                         <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
 
@@ -54,17 +68,6 @@
                             <!--end of snippet-->
 
 
-                        </div>
-                        <!--end of row-->
-
-                        <div ng-show="pages.length > 1" class="row" style="padding:16px;">
-                            <div class="text-center">
-                                <ul class="pagination" style="margin-top:36px">
-                                    <li ng-repeat="page in pages track by $index">
-                                        <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                         <!--end of row-->
 
