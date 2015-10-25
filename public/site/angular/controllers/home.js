@@ -110,6 +110,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			}
 
+			$scope.reply = {'text':'', 'subject':''};
 			alert('Your message has been sent!');
 			
 		});
