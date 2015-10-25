@@ -63,13 +63,14 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	}
 
 	function loadVisiblePosts(start){
-		console.log('loadVisiblePosts: '+start);
-		var max = start+4;
+		var index = start/4;
+		console.log('loadVisiblePosts: '+index);
+		var max = index+4;
 		if (max >= $scope.posts.length)
 			max = $scope.posts.length;
 
 		$scope.visiblePosts = [];
-		for (var i=start; i<max; i++)
+		for (var i=index; i<max; i++)
 			$scope.visiblePosts.push($scope.posts[i]);
 	}
 
