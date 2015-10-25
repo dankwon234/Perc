@@ -23,9 +23,16 @@ this.handleGet = function(req, res, pkg){
 		return;
 	}
 	
+
+	var params = req.query;
+	var limit = params.limit;
+	if (limit == null)
+		limit = '0';
+	
+	delete params['limit'];
 	
 	/* Query by filters passed into parameter string: */
-	Post.find(req.query, null, {sort:{timestamp:-1}}, function(err, posts) {
+	Post.find(req.query, null, {limit:limit, sort:{timestamp:-1}}, function(err, posts) {
 		console.log('FETCH Posts');
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
