@@ -65,7 +65,6 @@ this.handlePost = function(req, res, pkg){
 this.replyToPost = function(req, res, pkg){
 
 	var reply = req.body;
-
 	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 	sendgrid.send({
 		to:       'dennykwon2@gmail.com',

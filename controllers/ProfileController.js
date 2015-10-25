@@ -56,7 +56,7 @@ this.handlePost = function(req, res, pkg){
 			from:     'getpercs@gmail.com',
 			fromname: 'PERC',
 			subject:  'New Profile Registration',
-			text:     req.body
+			text:     JSON.stringify(req.body)
 		}, function(err, json) {
 			if (err) { }
 		});
