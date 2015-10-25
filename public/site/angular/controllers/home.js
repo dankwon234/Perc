@@ -46,8 +46,8 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			loadVisiblePosts(0)
-			paginate()
+			loadVisiblePosts(0);
+			paginate();
 		});
 	}
 
@@ -57,12 +57,13 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
-			loadVisiblePosts(0)
-			paginate()
+			loadVisiblePosts(0);
+			paginate();
 		});
 	}
 
 	function loadVisiblePosts(start){
+		console.log('loadVisiblePosts: '+start);
 		var max = start+4;
 		if (max >= $scope.posts.length)
 			max = $scope.posts.length;
@@ -81,8 +82,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 			$scope.pages.push(i);
 		}
 	}
-
-
 
 	$scope.createPost = function(){
 		if ($scope.currentCommunity == null)
