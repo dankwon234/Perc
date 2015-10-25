@@ -6,6 +6,8 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.posts = null;
 	$scope.selectedPost = null;
 	$scope.reply = {'text':'', 'subject':''};
+	$scope.visiblePosts = []; // only show 4 posts at a time
+	$scope.pages = [];
 
 
 	$scope.init = function(){
@@ -44,6 +46,8 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
+			loadVisiblePosts(0)
+			paginate()
 		});
 	}
 
@@ -53,8 +57,32 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.posts = response.posts;
+			loadVisiblePosts(0)
+			paginate()
 		});
 	}
+
+	function loadVisiblePosts(start){
+		var max = start+4;
+		if (max >= $scope.posts.length)
+			max = $scope.posts.length;
+
+		$scope.visiblePosts = [];
+		for (var i=start; i<max; i++)
+			$scope.visiblePosts.push($scope.posts[i]);
+	}
+
+
+	function paginate(){
+		for (var i=0; i<$scope.posts.length; i++){
+			if (i%4 != 0)
+				continue;
+
+			$scope.pages.push(i);
+		}
+	}
+
+
 
 	$scope.createPost = function(){
 		if ($scope.currentCommunity == null)

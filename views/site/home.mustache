@@ -13,7 +13,7 @@
 
             <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
                 <div class="row-fluid">
-                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1400px">
+                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1600px">
                         <sidebar ng-if="currentCommunity == null"></sidebar>
                         <communitysidebar ng-if="currentCommunity != null"></communitysidebar>
                     </div>
@@ -27,13 +27,13 @@
                         </div>
 
                         <div style="padding:64px 48px 0px 12px">
-                            <h3 style="margin-left:12px;">Business Opportunities</h3>
+                            <h4 style="margin-left:12px;">Business Opportunities</h4>
                             <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
                         </div>
 
                         <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
 
-                            <div ng-repeat="post in posts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
+                            <div ng-repeat="post in visiblePosts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
                                 <div style="margin:auto;background:url('https://media-service.appspot.com/site/images/<% post.image %>?crop=320');height:120px;">
                                     <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
                                         <img align="left" style="width:120px;margin-right:12px" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
@@ -57,21 +57,11 @@
                         </div>
                         <!--end of row-->
 
-                        <div class="row" style="padding:16px;">
+                        <div ng-show="pages.length > 1" class="row" style="padding:16px;">
                             <div class="text-center">
                                 <ul class="pagination" style="margin-top:36px">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
+                                    <li ng-repeat="page in pages track by $index">
+                                        <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
                                     </li>
                                 </ul>
                             </div>
