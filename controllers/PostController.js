@@ -25,7 +25,7 @@ this.handleGet = function(req, res, pkg){
 	
 	
 	/* Query by filters passed into parameter string: */
-	Post.find(req.query, function(err, posts) {
+	Post.find(req.query, null, {sort:{timestamp:-1}}, function(err, posts) {
 		console.log('FETCH Posts');
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
