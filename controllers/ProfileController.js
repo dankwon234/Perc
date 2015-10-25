@@ -49,7 +49,18 @@ this.handlePost = function(req, res, pkg){
 			res.json({'confirmation':'fail', 'message':err.message});
 			return;
 		}
-		
+
+		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+		sendgrid.send({
+			to:       'dennykwon2@gmail.com',
+			from:     'getpercs@gmail.com',
+			fromname: 'PERC',
+			subject:  'New Profile Registration',
+			text:     req.body
+		}, function(err, json) {
+			if (err) { }
+		});
+
 		req.session.user = profile._id; // install cookie with profile id set to 'user'
 	  	res.json({'confirmation':'success', 'profile':profile.summary()});
 	});
