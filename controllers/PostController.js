@@ -61,8 +61,8 @@ this.replyToPost = function(req, res, pkg){
 
 	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 	sendgrid.send({
-//		to:       'dennykwon2@gmail.com',
-		to:       '6tgks-5278228114@hous.craigslist.org',
+		to:       'dennykwon2@gmail.com',
+//		to:       '6tgks-5278228114@hous.craigslist.org',
 		from:     'getpercs@gmail.com',
 		fromname: 'PERC',
 		cc: 	  'dan.kwon234@gmail.com',
