@@ -25,7 +25,7 @@ communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 
 
     	$scope.profile.communities.unshift(community.id); // add at top of array
     	accountService.updateProfile($scope.profile, function(){
-	    	community['numMembers'] = community.numMembers+1;
+	    	community.members.push($scope.profile.id);
 	        RestService.put({resource:'community', id:community.id}, community, function(response){
 	            if (response.confirmation != 'success')
 	                return;
