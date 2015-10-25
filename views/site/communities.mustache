@@ -32,6 +32,14 @@
                             <div class="spinner"></div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>Join your community to find job opportunities posted specifically for your group</p>
+                        </div>
+                    </div>
+
+
                     <div class="row masonry masonryFlyIn mb40">
 
                         <div ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item">
@@ -44,7 +52,6 @@
 
                             <div class="inner">
                                 <br />
-                                <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10">Website</span></a>
                                 <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% community.city.toUpperCase() %></span></a>
                                 <a ng-show="community.members.length>10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.members.length %> Members</span></a>
 
