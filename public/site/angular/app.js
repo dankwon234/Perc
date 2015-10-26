@@ -5,6 +5,7 @@ var modules = [
   'PostModule',
   'CommunityModule',
   'CommunitiesModule',
+  'EmailModule',
 	'GeneralServiceModule',
 	'RestServiceModule',
 	'UploadServiceModule',
