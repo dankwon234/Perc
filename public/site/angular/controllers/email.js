@@ -29,17 +29,17 @@ app.controller('EmailController', ['$scope', 'generalService', 'accountService',
 		var pkg = {'recipients':$scope.recipients};
 		console.log('SEND EMAILS: '+JSON.stringify(pkg));
 		
-		// RestService.post({resource:'email', id:null}, pkg, function(response){
-		// 	console.log('EMAIL CONTROLLER == '+JSON.stringify(response));
-		// 	if (response.confirmation != 'success'){
-		// 		alert(response.message);
-		// 		return;
-		// 	}
+		RestService.post({resource:'email', id:null}, pkg, function(response){
+			console.log('EMAIL CONTROLLER == '+JSON.stringify(response));
+			if (response.confirmation != 'success'){
+				alert(response.message);
+				return;
+			}
 			
-		// 	$scope.recipientsString = '';
-		// 	$scope.recipients = [];
-		// 	alert('Emails Sent');
-		// });
+			$scope.recipientsString = '';
+			$scope.recipients = [];
+			alert('Emails Sent');
+		});
 	}
 	
 	
