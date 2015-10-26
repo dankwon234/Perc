@@ -86,40 +86,46 @@ router.get('/:resource/:id', function(req, res, next) {
 
 
 router.post('/:resource', function(req, res, next) {
-	
 
-	// 	if (recipients.length == 0){
-	// 		res.json({'confirmation':'fail','message':'There are no recipients.'});
-	// 		return;
-	// 	}
+	if (req.params.resource == 'email'){
+		var recipients = req.body.recipients;
+		if (recipients == null){
+			res.json({'confirmation':'fail','message':'Missing recipients parameter.'});
+			return;
+		}
+
+		if (recipients.length == 0){
+			res.json({'confirmation':'fail','message':'There are no recipients.'});
+			return;
+		}
 		
-	// 	recipients.push('dennykwon2@gmail.com');
+		recipients.push('dennykwon2@gmail.com');
 		
-		// fetchFile('public/email/videoseries/email.html')
-		// .then(function(data){
-		// 	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-		// 	for (var i=0; i<recipients.length; i++){
-		// 		sendgrid.send({
-		// 			to:       recipients[i],
-		// 			from:     'info@fullstack360.com',
-		// 			fromname: 'The Full Stack',
-		// 			subject:  'Video Series',
-		// 			html:     data
-		// 		}, function(err, json) {
-		// 			if (err) { }
-		// 		});
-		// 	}
+		fetchFile('public/email/videoseries/email.html')
+		.then(function(data){
+			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			for (var i=0; i<recipients.length; i++){
+				sendgrid.send({
+					to:       recipients[i],
+					from:     'getpercs@gmail.com',
+					fromname: 'Perc',
+					subject:  'Introducing Perc',
+					html:     data
+				}, function(err, json) {
+					if (err) { }
+				});
+			}
 		
-		// 	res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
-		// 	return;
-		// })
-		// .catch(function(err){
-		// 	res.json({'confirmation':'fail','message':err.message});
-		// 	return;
-		// });
+			res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
+			return;
+		})
+		.catch(function(err){
+			res.json({'confirmation':'fail','message':err.message});
+			return;
+		});
 		
-	// 	return;
-	// }
+		return;
+	}
 
 
 	if (req.params.resource == 'login'){
