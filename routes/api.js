@@ -18,14 +18,12 @@ var controllers = {
 
 var fetchFile = function(path){
 	return new Promise(function (resolve, reject){
-
 		fs.readFile(path, 'utf8', function (err, data) {
 			if (err) {reject(err); }
 			else { resolve(data); }
 		});
 	});
 }
-
 
 
 router.get('/:resource', function(req, res, next) {
@@ -36,6 +34,33 @@ router.get('/:resource', function(req, res, next) {
 
 	if (req.params.resource == 'logout'){
 		accountController.handleLogout(req, res, null);
+		return;
+	}
+
+	if (req.params.resource == 'email'){
+		fetchFile('public/email/intro/email.html')
+		.then(function(data){
+			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			sendgrid.send({
+				to:       'dennykwon2@gmail.com',
+				from:     'getpercs@gmail.com',
+				fromname: 'Perc',
+				subject:  'TEST',
+				html:     data
+			}, function(err, json) {
+				if (err) { }
+			});
+		
+			res.json({'confirmation':'success', 'message':'Email sent to dennykwon2@gmail.com.'});
+			return;
+		})
+		.catch(function(err){
+			res.json({'confirmation':'fail','message':err.message});
+			return;
+		});
+
+
+
 		return;
 	}
 
@@ -70,28 +95,28 @@ router.post('/:resource', function(req, res, next) {
 		
 	// 	recipients.push('dennykwon2@gmail.com');
 		
-	// 	fetchFile('public/email/videoseries/email.html')
-	// 	.then(function(data){
-	// 		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-	// 		for (var i=0; i<recipients.length; i++){
-	// 			sendgrid.send({
-	// 				to:       recipients[i],
-	// 				from:     'info@fullstack360.com',
-	// 				fromname: 'The Full Stack',
-	// 				subject:  'Video Series',
-	// 				html:     data
-	// 			}, function(err, json) {
-	// 				if (err) { }
-	// 			});
-	// 		}
+		// fetchFile('public/email/videoseries/email.html')
+		// .then(function(data){
+		// 	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+		// 	for (var i=0; i<recipients.length; i++){
+		// 		sendgrid.send({
+		// 			to:       recipients[i],
+		// 			from:     'info@fullstack360.com',
+		// 			fromname: 'The Full Stack',
+		// 			subject:  'Video Series',
+		// 			html:     data
+		// 		}, function(err, json) {
+		// 			if (err) { }
+		// 		});
+		// 	}
 		
-	// 		res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
-	// 		return;
-	// 	})
-	// 	.catch(function(err){
-	// 		res.json({'confirmation':'fail','message':err.message});
-	// 		return;
-	// 	});
+		// 	res.json({'confirmation':'success', 'message':'Email sent to '+recipients});
+		// 	return;
+		// })
+		// .catch(function(err){
+		// 	res.json({'confirmation':'fail','message':err.message});
+		// 	return;
+		// });
 		
 	// 	return;
 	// }
