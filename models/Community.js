@@ -26,6 +26,7 @@ CommunitySchema.methods.summary = function() {
 		'url':this.url,
 		'image':this.image,
 		'members':this.members,
+		'numMembers':this.numMembers,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
