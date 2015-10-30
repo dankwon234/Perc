@@ -99,6 +99,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 			
 			$scope.posts.unshift(response.post);
 			$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':''};
+			$scope.loadVisiblePosts(0);
 		});
 	}
 	
