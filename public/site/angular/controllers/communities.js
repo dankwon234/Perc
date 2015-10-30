@@ -23,7 +23,8 @@ communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 
     		return;
     	}
 
-    	$scope.profile.communities.unshift(community.id); // add at top of array
+//    	$scope.profile.communities.unshift(community.id); // add at top of array
+        $scope.profile['communities'] = [community.id] // for now, can only join one comminity
     	accountService.updateProfile($scope.profile, function(){
 	    	community.members.push($scope.profile.id);
 	        RestService.put({resource:'community', id:community.id}, community, function(response){
