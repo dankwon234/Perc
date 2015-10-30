@@ -20,24 +20,6 @@
 
 
                     <div class="col-md-9">
-                        <div class="row masonry-loader">
-                            <div class="col-sm-12 text-center">
-                                <div class="spinner"></div>
-                            </div>
-                        </div>
-
-
-
-                        <div ng-show="pages.length > 1" class="row" style="padding:0px;">
-                            <div class="text-center">
-                                <ul class="pagination" style="margin-top:0px;">
-                                    <li ng-repeat="page in pages track by $index">
-                                        <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--end of row-->
 
 
                         <div class="row mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
@@ -45,6 +27,7 @@
                             <div style="width:100%;padding:20px;background:#fff;border:1px solid #ddd">
                                 <h4 style="margin-bottom:0px">
                                     Business Opportunities
+
                                     <a ng-show="currentCommunity != null" style="float:right" data-toggle="modal" data-target="#postJobModal" class="btn btn-rounded" href="#">Post</a>
                                 </h4>
                             </div>
@@ -62,13 +45,21 @@
                                     <div class="col-md-2" style="text-align:right">
                                         <% generalService.formattedDate(post.timestamp) %>
                                         <div class="clearfix" style="margin-bottom:12px"></div>
-                                        <a ng-if="currentCommunity == null" ng-click="selectPost(post)" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Learn More</a>
+                                        <a ng-if="currentCommunity == null" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Reply</a>
                                         <a ng-if="currentCommunity != null" ng-click="selectPost(post)" class="btn btn-sm" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
                                     </div>
                                 </div>
                             </div>
 
 
+                        </div>
+
+                        <div style="text-align:center">
+                            <ul class="pagination" style="margin-top:0px;float:center">
+                                <li ng-repeat="page in pages track by $index">
+                                    <a ng-click="loadVisiblePosts(pages[$index])" href=""><% $index+1 %></a>
+                                </li>
+                            </ul>
                         </div>
 
 
