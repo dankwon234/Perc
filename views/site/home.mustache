@@ -27,10 +27,6 @@
                         </div>
 
 
-                        <div style="padding:64px 48px 0px 12px">
-                            <h4 style="margin-left:12px;">Business Opportunities</h4>
-                            <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
-                        </div>
 
                         <div ng-show="pages.length > 1" class="row" style="padding:0px;">
                             <div class="text-center">
@@ -44,32 +40,37 @@
                         <!--end of row-->
 
 
+                        <div class="row mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
 
-                        <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
+                            <div style="width:100%;padding:20px;background:#fff;border:1px solid #ddd">
+                                <h4 style="margin-bottom:0px">
+                                    Business Opportunities
+                                    <a ng-show="currentCommunity != null" style="float:right" data-toggle="modal" data-target="#postJobModal" class="btn btn-rounded" href="#">Post</a>
+                                </h4>
+                            </div>
 
-                            <div ng-repeat="post in visiblePosts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('https://media-service.appspot.com/site/images/<% post.image %>?crop=320');height:120px;">
-                                    <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
-                                        <h4><a style="font-weight:400;color:#fff;" href="/site/post/<% post.id %>"><% post.title %></a></h4>
+                            <div ng-repeat="post in visiblePosts track by $index" style="width:100%;min-height:136px;padding:20px;background:#f9f9f9;border:1px solid #ddd;border-top:none">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <img align="left" style="height:120px;margin-right:16px" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
+                                        <h4 style="margin-bottom:0px">
+                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% post.title %></a>
+                                        </h4>
+                                        <p><% post.text %></p>
+                                    </div>
+
+                                    <div class="col-md-2" style="text-align:right">
+                                        <% generalService.formattedDate(post.timestamp) %>
+                                        <div class="clearfix" style="margin-bottom:12px"></div>
+                                        <a ng-if="currentCommunity == null" ng-click="selectPost(post)" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Learn More</a>
+                                        <a ng-if="currentCommunity != null" ng-click="selectPost(post)" class="btn btn-sm" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
                                     </div>
                                 </div>
-                                <div class="inner" style="width:100%;">
-                                    <br />
-                                    <a href="#">
-                                        <span class="inline-block mb16"><% generalService.formattedDate(post.timestamp) %></span>
-                                    </a>
-                                    <hr>
-                                    <p style="height:180px"><% post.text %></p>
-                                    <a ng-if="currentCommunity == null" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
-                                    <a ng-if="currentCommunity != null" ng-click="selectPost(post)" class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#replyModal" href="">Reply</a>
-                                </div>
                             </div>
-                            <!--end of snippet-->
 
 
                         </div>
-                        <!--end of row-->
+
 
 
                     </div>
