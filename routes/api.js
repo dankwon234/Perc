@@ -37,6 +37,12 @@ router.get('/:resource', function(req, res, next) {
 		return;
 	}
 
+	// update posts to include all communities:
+	if (req.params.resource == 'update'){
+		postController.updatePosts(req, res, null);
+		return;
+	}
+
 	if (req.params.resource == 'email'){
 		fetchFile('public/email/intro/email.html')
 		.then(function(data){

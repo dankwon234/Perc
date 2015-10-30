@@ -1,5 +1,19 @@
 var Post = require('../models/Post.js');
+var Community = require('../models/Community.js');
+var Promise = require('bluebird');
 var mongoose = require('mongoose');
+
+
+
+var fetchCommunities = function(){
+	return new Promise(function (resolve, reject){
+		Community.find(null, function(err, communities) {
+			if (err) {reject(err); }
+			else { resolve(communities); }
+		});
+	});
+}
+
 
 
 this.handleGet = function(req, res, pkg){
@@ -43,6 +57,46 @@ this.handleGet = function(req, res, pkg){
 	});
 }
 
+
+this.updatePosts = function(req, res, pkg){
+
+
+	fetchCommunities()
+	.then(function(communities){
+		var communitiesArray = [];
+		for (var i=0; i<communities.length; i++){
+			var community = communities[i];
+			communitiesArray.push(community.id);
+		}
+
+//		res.json({'confirmation':'success', 'communities':communitiesArray});
+
+		Post.find(req.query, null, {limit:0, sort:{timestamp:-1}}, function(err, posts) {
+			console.log('FETCH Posts');
+			if (err) {
+				res.json({'confirmation':'fail', 'message':err.message});
+				return;
+			}
+			
+			for (var j=0; j<posts.length; j++){
+				var post = posts[j];
+				post['communities'] = communitiesArray;
+				post.save();
+			}
+
+			res.json({'confirmation':'success', 'posts':convertToJson(posts)});
+			return;
+		});
+		return;
+	})
+	.catch(function(err){
+		res.json({'confirmation':'fail', 'message':err.message});
+
+	});
+
+
+
+}
 
 // - - - - - - - - - - - - - - - - - - - - POST HANDLER - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
