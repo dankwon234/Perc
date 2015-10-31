@@ -136,15 +136,14 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		$scope.reply['subject'] = $scope.selectedPost.title;
 
 		RestService.post({resource:'reply', id:null}, $scope.reply, function(response){
-			console.log('REPLY TO POST: '+JSON.stringify(response));
 			if (response.confirmation != 'success'){
 				alert(response.message);
 				return;
 			}
 
 			$scope.reply = {'text':'', 'subject':''};
+			$scope.unselectPost();
 			alert('Your message has been sent!');
-			
 		});
 
   	}
