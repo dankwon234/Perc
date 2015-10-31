@@ -2,7 +2,7 @@ var homeCtr = angular.module('HomeModule', []);
 
 homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
 	$scope.currentCommunity = null;
-	$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':''};
+	$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':'vAcKMGDo'};
 	$scope.posts = null;
 	$scope.selectedPost = null;
 	$scope.reply = {'text':'', 'subject':''};
