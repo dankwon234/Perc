@@ -88,29 +88,6 @@ router.get('/:resource', function(req, res, next) {
 		return;
 	}
 
-	if (req.params.resource == 'email'){
-		fetchFile('public/email/intro/email.html')
-		.then(function(data){
-			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-			sendgrid.send({
-				to:       'dennykwon2@gmail.com',
-				from:     'getpercs@gmail.com',
-				fromname: 'Perc',
-				subject:  'TEST',
-				html:     data
-			}, function(err, json) {
-				if (err) { }
-			});
-		
-			res.json({'confirmation':'success', 'message':'Email sent to dennykwon2@gmail.com.'});
-			return;
-		})
-		.catch(function(err){
-			res.json({'confirmation':'fail','message':err.message});
-			return;
-		});
-		return;
-	}
 
 	var controller = controllers[req.params.resource];
 	if (controller == null){
