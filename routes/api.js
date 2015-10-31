@@ -3,6 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 var Promise = require('bluebird');
 var request = require('request');
+var Post = require('../models/Post.js');
 var accountController = require('../controllers/AccountController.js');
 var profileController = require('../controllers/ProfileController.js');
 var companyController = require('../controllers/CompanyController.js');
@@ -26,6 +27,16 @@ var fetchFile = function(path){
 }
 
 
+var fetchFeaturedPosts = function(){
+	return new Promise(function (resolve, reject){
+		Post.find({featured:'yes'}, null, {limit:3, sort:{timestamp:-1}}, function(err, posts) {
+			if (err) {reject(err); }
+			else { resolve(posts); }
+		});
+	});
+}
+
+
 router.get('/:resource', function(req, res, next) {
 	if (req.params.resource == 'currentuser'){ // check if current user is logged in
 		accountController.checkCurrentUser(req, res);
@@ -40,6 +51,40 @@ router.get('/:resource', function(req, res, next) {
 	// update posts to include all communities:
 	if (req.params.resource == 'update'){
 		postController.updatePosts(req, res, null);
+		return;
+	}
+
+	if (req.params.resource == 'emailtemplate'){
+		var template = null;
+		var post = null;
+
+		fetchFile('public/email/intro/email.html')
+		.then(function(data){
+			template = data;
+			return fetchFile('public/email/intro/post.html');
+		})
+		.then(function(data){
+			post = data;
+			return fetchFeaturedPosts();
+		})
+		.then(function(posts){
+			var postsHtml = '';
+			for (var i=0; i<posts.length; i++){
+				var p = posts[i];
+				var postHtml = post.replace('{{title}}', p.title);
+				postHtml = postHtml.replace('{{text}}', p.text);
+				postHtml = postHtml.replace('{{image}}', p.image);
+				postsHtml += postHtml+'<br /><br />';
+			}
+
+			template = template.replace('{{posts}}', postsHtml);
+			res.send(template);
+
+		})
+		.catch(function(err){
+			res.json({'confirmation':'fail','message':err.message});
+			return;
+		});
 		return;
 	}
 
@@ -64,9 +109,6 @@ router.get('/:resource', function(req, res, next) {
 			res.json({'confirmation':'fail','message':err.message});
 			return;
 		});
-
-
-
 		return;
 	}
 
