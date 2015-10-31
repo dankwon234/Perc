@@ -64,7 +64,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
 	$scope.loadVisiblePosts = function(index){
 		console.log('loadVisiblePosts: '+index);
-		var max = index+8;
+		var max = index+6;
 		if (max >= $scope.posts.length)
 			max = $scope.posts.length;
 
@@ -76,7 +76,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
 	function paginate(){
 		for (var i=0; i<$scope.posts.length; i++){
-			if (i%8 != 0)
+			if (i%6 != 0)
 				continue;
 
 			$scope.pages.push(i);
