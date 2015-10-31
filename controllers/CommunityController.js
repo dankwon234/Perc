@@ -25,7 +25,7 @@ this.handleGet = function(req, res, pkg){
 	
 	
 	/* Query by filters passed into parameter string: */
-	Community.find(req.query, function(err, communities) {
+	Community.find(req.query, null, {sort:{timestamp:-1}}, function(err, communities) {
 		console.log('FETCH Companies');
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
