@@ -157,7 +157,7 @@ router.post('/:resource', function(req, res, next) {
 					to:       recipients[i],
 					from:     'getpercs@gmail.com',
 					fromname: 'Perc',
-					subject:  'Introducing Perc',
+					subject:  'Featured Jobs',
 					html:     data
 				}, function(err, json) {
 					if (err) { }
