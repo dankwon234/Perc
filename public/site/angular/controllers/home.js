@@ -125,6 +125,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
   	$scope.unselectPost = function(){
 		$scope.selectedPost = null;
+		$scope.reply = {'text':'', 'subject':''};
   	}
 
   	$scope.replyToPost = function(){
@@ -141,7 +142,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			}
 
-			$scope.reply = {'text':'', 'subject':''};
 			$scope.unselectPost();
 			alert('Your message has been sent!');
 		});
