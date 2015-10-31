@@ -149,7 +149,7 @@ router.post('/:resource', function(req, res, next) {
 		
 		recipients.push('dennykwon2@gmail.com');
 		
-		fetchFile('public/email/intro/email.html')
+		fetchFile('public/email/intro/final.html')
 		.then(function(data){
 			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 			for (var i=0; i<recipients.length; i++){
