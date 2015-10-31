@@ -5,7 +5,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.post = {'text':'', 'title':'', 'communities':[], 'type':'job', 'profile':'', 'tags':[], 'contact':'', 'image':'vAcKMGDo'};
 	$scope.posts = null;
 	$scope.selectedPost = null;
-	$scope.reply = {'text':'', 'subject':''};
+	$scope.reply = {'text':'', 'subject':'', 'sender':'', 'recpient':''};
 	$scope.visiblePosts = []; // only show 4 posts at a time
 	$scope.pages = [];
 
@@ -121,14 +121,18 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 
   	$scope.selectPost = function(post){
 		$scope.selectedPost = post;
+  	}
 
+  	$scope.unselectPost = function(){
+		$scope.selectedPost = null;
   	}
 
   	$scope.replyToPost = function(){
 		if ($scope.profile.id == null)
 			return;
 
-		$scope.reply['profile'] = $scope.profile.id;
+		$scope.reply['sender'] = $scope.profile.id;
+		$scope.reply['recipent'] = $scope.selectedPost.profile.id;
 		$scope.reply['subject'] = $scope.selectedPost.title;
 
 		RestService.post({resource:'reply', id:null}, $scope.reply, function(response){
