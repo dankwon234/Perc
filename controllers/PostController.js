@@ -1,5 +1,6 @@
 var Post = require('../models/Post.js');
 var Community = require('../models/Community.js');
+var fs = require('fs');
 var Promise = require('bluebird');
 var mongoose = require('mongoose');
 
