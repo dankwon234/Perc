@@ -120,7 +120,7 @@ this.handlePost = function(req, res, pkg){
 this.replyToPost = function(req, res, pkg){
 
 	var reply = req.body;
-	fetchFile('public/email/post/replye.html')
+	fetchFile('public/email/post/reply.html')
 	.then(function(data){
 		var replyHtml = data.replace('{{message}}', reply.text);
 
