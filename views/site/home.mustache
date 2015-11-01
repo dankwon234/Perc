@@ -19,60 +19,85 @@
                     </div>
 
 
+                    <div class="col-md-9 mb-xs-24">
+                            <div class="tabbed-content text-tabs" style="padding:32px">
+                                <ul class="tabs">
+                                    <li class="active">
+                                        <div class="tab-title">
+                                            <span>Opportunities</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <div style="width:100%;padding:20px;background:#fff;border:1px solid #ddd">
+                                                <h4 style="margin-bottom:0px">
+                                                    Business Opportunities
+                                                    <a ng-show="currentCommunity != null" style="float:right" data-toggle="modal" data-target="#postJobModal" class="btn btn-rounded" href="#">Post</a>
+                                                </h4>
+                                            </div>
+
+                                            <div ng-repeat="post in visiblePosts track by $index" style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;border-top:none">
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <img align="left" style="height:120px;margin-right:16px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
+                                                        <h4 style="margin-bottom:0px">
+                                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% post.title %></a>
+                                                        </h4>
+                                                        <p><% post.text %></p>
+                                                    </div>
+
+                                                    <div class="col-md-2" style="text-align:right">
+                                                        <% generalService.formattedDate(post.timestamp) %>
+                                                        <div class="clearfix" style="margin-bottom:12px"></div>
+                                                        <a ng-if="currentCommunity == null" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Reply</a>
+                                                        <a ng-if="currentCommunity!=null && selectedPost!=post" ng-click="selectPost(post)" class="btn btn-sm" href="">Reply</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row" ng-show="selectedPost == post">
+                                                    <br />
+                                                    <div class="col-md-12">
+                                                        <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                                        <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
+                                                        <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                            </div>
+
+
+
+                                            <div ng-show="pages.length > 1" style="text-align:center">
+                                                <ul class="pagination" style="margin-top:0px;float:center">
+                                                    <li ng-repeat="page in pages track by $index">
+                                                        <a ng-click="loadVisiblePosts(pages[$index])" class="back-to-top" href="#top"><% $index+1 %></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- End Tab Content -->
+                                     </li>
+
+                                    <li>
+                                        <div class="tab-title">
+                                            <span>Community</span>
+                                        </div>
+                                        <div class="tab-content">
+                                            <p>
+                                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end of text tabs-->
+
+
+                    </div>
+
+
+
+
+
                     <div class="col-md-9">
-
-
-                        <div class="row mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
-
-                            <div style="width:100%;padding:20px;background:#fff;border:1px solid #ddd">
-                                <h4 style="margin-bottom:0px">
-                                    Business Opportunities
-                                    <a ng-show="currentCommunity != null" style="float:right" data-toggle="modal" data-target="#postJobModal" class="btn btn-rounded" href="#">Post</a>
-                                </h4>
-                            </div>
-
-                            <div ng-repeat="post in visiblePosts track by $index" style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;border-top:none">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <img align="left" style="height:120px;margin-right:16px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
-                                        <h4 style="margin-bottom:0px">
-                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% post.title %></a>
-                                        </h4>
-                                        <p><% post.text %></p>
-                                    </div>
-
-                                    <div class="col-md-2" style="text-align:right">
-                                        <% generalService.formattedDate(post.timestamp) %>
-                                        <div class="clearfix" style="margin-bottom:12px"></div>
-                                        <a ng-if="currentCommunity == null" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Reply</a>
-                                        <a ng-if="currentCommunity!=null && selectedPost!=post" ng-click="selectPost(post)" class="btn btn-sm" href="">Reply</a>
-                                    </div>
-                                </div>
-                                <div class="row" ng-show="selectedPost == post">
-                                    <br />
-                                    <div class="col-md-12">
-                                        <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
-                                        <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
-                                        <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
-                                    </div>
-                                </div>
-                                <br />
-
-                            </div>
-
-
-                        </div>
-
-                        <div ng-show="pages.length > 1" style="text-align:center">
-                            <ul class="pagination" style="margin-top:0px;float:center">
-                                <li ng-repeat="page in pages track by $index">
-                                    <a ng-click="loadVisiblePosts(pages[$index])" class="back-to-top" href="#top"><% $index+1 %></a>
-                                </li>
-                            </ul>
-                        </div>
-
-
-
                     </div>
                     <!--end of 9 col-->
 
