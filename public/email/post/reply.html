@@ -7,14 +7,18 @@
 	<body style="font-family:Arial;background-color:#f9f9f9;color: #777;padding-top:0px;max-width:640px">
 		<div style="margin-top:16px;margin-bottom:36px;margin-left:auto;margin-right:auto;width:98%;background:#fff;border-top:16px solid #444;border-left:1px solid #ddd;border-right:1px solid #ddd;border-bottom:1px solid #ddd;">
 
-			<div style="padding:36px 36px 0px 36px;text-align:center">
-				<img style="width:220px;margin-left:auto;margin-right:auto;margin-bottom:24px" src="https://getpercs.herokuapp.com/email/intro/logo.png" />
-				<hr />
+
+			<div style="padding:36px">
+				{{message}}
 			</div>
 
-			{{posts}}
+			<div style="border-top:1px solid #ddd;padding:36px">
+				This message was sent to you by<br />
+				{{profile}}
+			</div>
 
-			<div style="border-top:1px solid #BFBFBF;padding:45px;margin-top:64px;text-align:center">
+
+			<div style="border-top:1px solid #BFBFBF;padding:45px;margin-top:24px;text-align:center">
 				<img style="width:220px;margin-left:auto;margin-right:auto" src="http://www.getpercs.com/site/img/iconRound.png" />
 				<p>
 					Perc is a job board based on communities. Sign up today and join the community that best fits your skill set or industry. Then find the jobs that are right for you. Click <a style="color:red;text-decoration:none" href="http://www.getpercs.com">here</a> to learn more.
