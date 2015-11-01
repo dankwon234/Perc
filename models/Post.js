@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
 	text: {type:String, trim:true, default:''},
 	title: {type:String, trim:true, default:''},
-	image: {type:String, trim:true, default:''},
+	image: {type:String, trim:true, default:'vAcKMGDo'},
 	contact: {type:String, trim:true, default:''}, // email, phone number
 	featured: {type:String, trim:true, default:'no'},
 	communities: {type:Array, default:[]},

@@ -10,7 +10,7 @@ var ProfileSchema = new mongoose.Schema({
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
 	email: {type:String, trim:true, lowercase:true, default:''},
 	bio: {type:String, trim:true, default:''},
-	image: {type:String, trim:true, default:''},
+	image: {type:String, trim:true, default:'vAcKMGDo'},
 	communities: {type:Array, default:[]},
 	password: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
