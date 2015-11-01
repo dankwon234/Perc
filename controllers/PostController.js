@@ -119,23 +119,52 @@ this.handlePost = function(req, res, pkg){
 this.replyToPost = function(req, res, pkg){
 
 	var reply = req.body;
-	var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-	sendgrid.send({
-		to:       'dennykwon2@gmail.com',
-//		to:       '6tgks-5278228114@hous.craigslist.org',
-		from:     'getpercs@gmail.com',
-		fromname: 'PERC',
-		cc: 	  'dan.kwon234@gmail.com',
-		subject:  reply.subject,
-		text:     reply.text
-	}, function(err, json) {
-		if (err) {
-			res.json({'confirmation':'fail', 'message':err.message});
-			return;
-		}
+	fetchFile('public/email/post/replye.html')
+	.then(function(data){
+		var replyHtml = data.replace('{{message}}', reply.text);
 
-		res.json({'confirmation':'success', 'message':'Your message has been sent!'});
+		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+		sendgrid.send({
+			to:       'dennykwon2@gmail.com',
+			from:     'getpercs@gmail.com',
+			fromname: 'PERC',
+			cc: 	  'dan.kwon234@gmail.com',
+			subject:  reply.subject,
+			html:     replyHtml
+		}, function(err, json) {
+			if (err) {
+				res.json({'confirmation':'fail', 'message':err.message});
+				return;
+			}
+
+			res.json({'confirmation':'success', 'message':'Your message has been sent!'});
+			return;
+		});
+	})
+	.catch(function(err){
+		res.json({'confirmation':'fail', 'message':err.message});
+		return;
 	});
+
+
+
+	// var reply = req.body;
+	// var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+	// sendgrid.send({
+	// 	to:       'dennykwon2@gmail.com',
+	// 	from:     'getpercs@gmail.com',
+	// 	fromname: 'PERC',
+	// 	cc: 	  'dan.kwon234@gmail.com',
+	// 	subject:  reply.subject,
+	// 	text:     reply.text
+	// }, function(err, json) {
+	// 	if (err) {
+	// 		res.json({'confirmation':'fail', 'message':err.message});
+	// 		return;
+	// 	}
+
+	// 	res.json({'confirmation':'success', 'message':'Your message has been sent!'});
+	// });
 
 
 }
@@ -180,5 +209,12 @@ function randomString(limit){
     return text;
 }
 
-
+var fetchFile = function(path){
+	return new Promise(function (resolve, reject){
+		fs.readFile(path, 'utf8', function (err, data) {
+			if (err) {reject(err); }
+			else { resolve(data); }
+		});
+	});
+}
 
