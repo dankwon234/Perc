@@ -90,7 +90,7 @@
                                                     <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% profile.image %>?crop=320');height:120px">
                                                         <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px;text-align:right">
                                                             <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=260" />
-                                                            <h4 style="color:#fff;"><% profile.firstName %> <% profile.lastName %></h4>
+                                                            <h4 style="color:#fff;"><% generalService.capitalize(profile.firstName) %> <% generalService.capitalize(profile.lastName) %></h4>
                                                         </div>
                                                     </div>
 
@@ -99,7 +99,7 @@
                                                         <a ng-show="profile.title.length>0" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% profile.title %></span></a>
 
                                                         <br /><br /><hr>
-                                                        <p style="height:160px"><% generalService.truncatedText(profile.bio, 300) %></p>
+                                                        <p style="height:160px"><% generalService.truncatedText(profile.bio, 170) %></p>
                                                         <a class="btn btn-sm" href="/">View</a>
                                                     </div>
                                                 </div>
