@@ -38,8 +38,6 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		});
 	}
 
-
-
 	function fetchFeaturedPosts(){
 		RestService.query({resource:'post', id:null, featured:'yes'}, function(response){
 			if (response.confirmation != 'success')
@@ -59,7 +57,19 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 			$scope.posts = response.posts;
 			$scope.loadVisiblePosts(0);
 			paginate();
+			fetchCommunityProfiles($scope.currentCommunity);
 		});
+	}
+
+	function fetchCommunityProfiles(community){
+		RestService.query({resource:'profile', id:null, communities:community.id}, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.currentCommunity['profiles'] = response.profiles;
+			console.log('fetchCommunityProfiles: '+JSON.stringify($scope.currentCommunity.profiles));
+		});
+
 	}
 
 	$scope.loadVisiblePosts = function(index){
