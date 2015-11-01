@@ -5,6 +5,7 @@ var ProfileSchema = new mongoose.Schema({
 	firstName: {type:String, trim:true, lowercase:true, default:''},
 	lastName: {type:String, trim:true, lowercase:true, default:''},
 	featured: {type:String, trim:true, default:'no'},
+	points: {type:Number, default:0},
 	title: {type:String, trim:true, default:''},
 	url: {type:String, trim:true, default:''}, // url path, e.g. www.getpercs.com/profile/dan-kwon234
 	email: {type:String, trim:true, lowercase:true, default:''},
@@ -21,6 +22,7 @@ ProfileSchema.methods.summary = function() {
 		'firstName':this.firstName,
 		'lastName':this.lastName,
 		'featured':this.featured,
+		'points':this.points,
 		'title':this.title,
 		'url':this.url,
 		'email':this.email,
