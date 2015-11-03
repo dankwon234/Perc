@@ -143,6 +143,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 			return;
 
 		$scope.reply['profile'] = $scope.profile;
+		$scope.reply['post'] = $scope.selectedPost;
 		$scope.reply['sender'] = $scope.profile.id;
 		$scope.reply['recipent'] = $scope.selectedPost.profile.id;
 		$scope.reply['subject'] = $scope.selectedPost.title;
