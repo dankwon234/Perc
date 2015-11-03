@@ -20,63 +20,63 @@
 
 
                     <div class="col-md-9">
-                        <div class="row masonry-loader">
-                            <div class="col-sm-12 text-center">
-                                <div class="spinner"></div>
-                            </div>
-                        </div>
 
-                        <div style="padding:64px 48px 0px 12px">
-                            <h3 style="margin-left:12px;">Business Opportunities</h3>
-                            <a ng-show="currentCommunity != null" data-toggle="modal" data-target="#postJobModal" class="btn btn-lg btn-rounded" href="#">Post</a>
-                        </div>
+                        <div class="row masonry mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
 
+                            <div style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <img align="left" style="height:120px;margin-right:16px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
+                                        <h4 style="margin-bottom:0px">
+                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% post.title %></a>
+                                        </h4>
+                                        <p><% post.text %></p>
+                                    </div>
 
-                        <div class="row masonry mb40" style="padding:0px 24px 0px 24px;margin-top:0px">
-
-                            <div ng-repeat="post in posts track by $index" class="col-sm-5 post-snippet masonry-item pt48" style="margin-right:24px;margin-top:12px">
-                                <div style="margin:auto;background:url('https://media-service.appspot.com/site/images/<% post.image %>?crop=320');height:120px;">
-                                    <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                        <img align="left" style="width:120px;margin-right:12px" src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
-                                        <h4><a style="font-weight:400;color:#fff;" href="#"><% post.title %></a></h4>
+                                    <div class="col-md-2" style="text-align:right">
+                                        <% generalService.formattedDate(post.timestamp) %>
+                                        <div class="clearfix" style="margin-bottom:12px"></div>
+                                        <a ng-if="currentCommunity == null" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Reply</a>
+                                        <a ng-if="currentCommunity!=null && selectedPost!=post" ng-click="selectPost(post)" class="btn btn-sm" href="">Reply</a>
                                     </div>
                                 </div>
-                                <div class="inner" style="width:100%;">
+                                <div class="row" ng-show="selectedPost == post">
                                     <br />
-                                    <a href="#">
-                                        <span class="inline-block mb16">September 23, 2015</span>
-                                    </a>
-                                    <hr>
-                                    <p><% post.text %></p>
-                                    <a class="btn btn-sm btn-rounded" data-toggle="modal" data-target="#signupModal" href="#">Learn More</a>
+                                    <div class="col-md-12">
+                                        <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                        <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
+                                        <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+
+
+                            <div style="border:1px solid #ddd;border-top:none;padding:20px">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p>
+                                            This is a comment. This is a comment. This is a comment. This is a comment.
+                                            This is a comment. This is a comment. This is a comment. This is a comment.
+                                            This is a comment. This is a comment. This is a comment. This is a comment.
+                                        </p>
+                                        <span>November 2</span>
+                                    </div>
+                                    <div class="col-md-2" style="text-align:right">
+                                        <img style="width:90px;border-radius:45px" src="https://media-service.appspot.com/site/images/A2O_Vu-s?crop=360" />
+                                        <h4 style="margin-bottom:0px">Dkwon</h4>
+                                    </div>
                                 </div>
                             </div>
-                            <!--end of snippet-->
+
+                            <textarea ng-model="comment.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd;margin-top:24px"></textarea>
+                            <a ng-click="submitComment()" class="btn btn-sm" style="float:right;" href="">Submit Comment</a>
+
 
 
                         </div>
                         <!--end of row-->
 
-                        <div class="row" style="padding:16px;">
-                            <div class="text-center">
-                                <ul class="pagination" style="margin-top:36px">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--end of row-->
 
 
                     </div>
