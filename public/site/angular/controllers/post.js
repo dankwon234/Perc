@@ -30,8 +30,13 @@ postCtr.controller('PostController', ['$scope', 'accountService', 'generalServic
 	}
 
 	$scope.submitComment = function(){
+		if ($scope.profile.id == null)
+			return;
+
+		$scope.comment['profile'] = {'id':$scope.profile.id, 'name':$scope.profile.firstName, 'image':$scope.profile.image};
+		$scope.comment['thread'] = $scope.post.id;
 		console.log('submitComment: '+JSON.stringify($scope.comment));
-		
+
 	}
 
 
