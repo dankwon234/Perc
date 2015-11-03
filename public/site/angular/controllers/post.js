@@ -37,11 +37,14 @@ postCtr.controller('PostController', ['$scope', 'accountService', 'generalServic
 		$scope.comment['thread'] = $scope.post.id;
 		console.log('submitComment: '+JSON.stringify($scope.comment));
 
+		RestService.post({resource:'comment', id:null}, $scope.comment, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.post.comments.push(response.comment);
+			$scope.comment = {'text':'', 'profile':'', 'thread':''};
+		});
 	}
-
-
-	
-	
 	
 	
 	
