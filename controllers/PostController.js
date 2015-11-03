@@ -130,10 +130,11 @@ this.replyToPost = function(req, res, pkg){
 
 		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 		sendgrid.send({
-			to:       'dennykwon2@gmail.com',
+//			to:       reply.post.contact, // live
+			to:       'dennykwon2@gmail.com', // dev
 			from:     'getpercs@gmail.com',
 			fromname: 'PERC',
-			cc: 	  'dan.kwon234@gmail.com',
+			bcc: 	  'dan.kwon234@gmail.com',
 			subject:  reply.subject,
 			html:     replyHtml
 		}, function(err, json) {
