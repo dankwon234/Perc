@@ -14,6 +14,7 @@ var controllers = {
 	'profile':profileController,
 	'post':postController,
 	'community':communityController,
+	'comment':commentController,
 	'company':companyController
 };
 
