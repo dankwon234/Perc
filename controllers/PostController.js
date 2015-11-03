@@ -123,8 +123,10 @@ this.replyToPost = function(req, res, pkg){
 	fetchFile('public/email/post/reply.html')
 	.then(function(data){
 		var replyHtml = data.replace('{{message}}', reply.text);
-		replyHtml = replyHtml.replace('{{firstName}}', reply.profile.firstName);
-		replyHtml = replyHtml.replace('{{lastName}}', reply.profile.lastName);
+		replyHtml = replyHtml.replace('{{firstName}}', reply.profile.firstName.toUpperCase());
+		replyHtml = replyHtml.replace('{{lastName}}', reply.profile.lastName.toUpperCase());
+		replyHtml = replyHtml.replace('{{image}}', reply.profile.image);
+		replyHtml = replyHtml.replace('{{commnunity}}', reply.commnunity);
 
 		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 		sendgrid.send({
@@ -148,28 +150,6 @@ this.replyToPost = function(req, res, pkg){
 		res.json({'confirmation':'fail', 'message':err.message});
 		return;
 	});
-
-
-
-	// var reply = req.body;
-	// var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-	// sendgrid.send({
-	// 	to:       'dennykwon2@gmail.com',
-	// 	from:     'getpercs@gmail.com',
-	// 	fromname: 'PERC',
-	// 	cc: 	  'dan.kwon234@gmail.com',
-	// 	subject:  reply.subject,
-	// 	text:     reply.text
-	// }, function(err, json) {
-	// 	if (err) {
-	// 		res.json({'confirmation':'fail', 'message':err.message});
-	// 		return;
-	// 	}
-
-	// 	res.json({'confirmation':'success', 'message':'Your message has been sent!'});
-	// });
-
-
 }
 
 
