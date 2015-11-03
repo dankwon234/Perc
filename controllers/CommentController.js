@@ -24,7 +24,7 @@ this.handleGet = function(req, res, pkg){
 	
 	
 	/* Query by filters passed into parameter string: */
-	Comment.find(req.query, null, {sort:{timestamp:-1}}, function(err, comments) {
+	Comment.find(req.query, null, {sort:{timestamp:1}}, function(err, comments) {
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
 			return;
