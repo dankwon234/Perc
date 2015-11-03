@@ -2,6 +2,7 @@ var postCtr = angular.module('PostModule', []);
 
 postCtr.controller('PostController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
 	$scope.post = null;
+	$scope.comment = {'text':'', 'profile':'', 'thread':''};
 
 	
 	$scope.init = function(){
@@ -14,7 +15,23 @@ postCtr.controller('PostController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.post = response.post;
+			fetchPostComments();
 		});
+	}
+
+
+	function fetchPostComments(){
+		RestService.query({resource:'comment', id:null, thread:$scope.post.id}, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.post['comments'] = response.comments;
+		});
+	}
+
+	$scope.submitComment = function(){
+		console.log('submitComment: '+JSON.stringify($scope.comment));
+		
 	}
 
 
