@@ -28,7 +28,7 @@ router.get('/:page/:id', function(req, res, next) {
 			}
 
 			var url = 'http://www.getpercs.com/site/post/'+post.id;
-			var imageUrl = 'https://media-service.appspot.com/site/images/'+post.image;
+			var imageUrl = 'https://media-service.appspot.com/site/images/'+post.image+'?crop=360';
 			var fbTags = {postTitle:post.title, postImage:imageUrl, postUrl:url, postDescription:post.text};
 			res.render('site/'+page, fbTags);
 			return;
