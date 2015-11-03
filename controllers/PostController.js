@@ -126,7 +126,7 @@ this.replyToPost = function(req, res, pkg){
 		replyHtml = replyHtml.replace('{{firstName}}', reply.profile.firstName.toUpperCase());
 		replyHtml = replyHtml.replace('{{lastName}}', reply.profile.lastName.toUpperCase());
 		replyHtml = replyHtml.replace('{{image}}', reply.profile.image);
-		replyHtml = replyHtml.replace('{{commnunity}}', reply.commnunity);
+		replyHtml = replyHtml.replace('{{community}}', reply.commnunity);
 
 		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 		sendgrid.send({
