@@ -9,6 +9,7 @@ var profileController = require('../controllers/ProfileController.js');
 var companyController = require('../controllers/CompanyController.js');
 var communityController = require('../controllers/CommunityController.js');
 var postController = require('../controllers/PostController.js');
+var commentController = require('../controllers/CommentController.js');
 var controllers = {
 	'profile':profileController,
 	'post':postController,
