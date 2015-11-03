@@ -2,6 +2,12 @@
 <html lang="en" ng-app="Perc" ng-controller="BaseController" ng-init="checkCurrentUser()">
     <head>
         {{>head}}
+        <meta property="og:title" content="{{postTitle}}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="{{postImage}}" />
+        <meta property="og:url" content="{{postUrl}}" />
+        <meta property="og:description" content="{{postDescription}}" />
+        <meta property="og:site_name" content="PERC" />        
     </head>
 
 
