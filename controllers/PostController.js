@@ -123,6 +123,8 @@ this.replyToPost = function(req, res, pkg){
 	fetchFile('public/email/post/reply.html')
 	.then(function(data){
 		var replyHtml = data.replace('{{message}}', reply.text);
+		replyHtml = replyHtml.replace('{{firstName}}', reply.profile.firstName);
+		replyHtml = replyHtml.replace('{{lastName}}', reply.profile.lastName);
 
 		var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 		sendgrid.send({
