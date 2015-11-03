@@ -146,6 +146,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 		$scope.reply['sender'] = $scope.profile.id;
 		$scope.reply['recipent'] = $scope.selectedPost.profile.id;
 		$scope.reply['subject'] = $scope.selectedPost.title;
+		$scope.reply['community'] = $scope.currentCommunity.name;
 
 		RestService.post({resource:'reply', id:null}, $scope.reply, function(response){
 			if (response.confirmation != 'success'){
