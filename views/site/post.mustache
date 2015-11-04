@@ -71,8 +71,8 @@
                                 </div>
                             </div>
 
-                            <textarea ng-model="comment.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd;margin-top:24px"></textarea>
-                            <a ng-click="submitComment()" class="btn btn-sm" style="float:right;" href="">Submit Comment</a>
+                            <textarea ng-if="profile.id != null" ng-model="comment.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd;margin-top:24px"></textarea>
+                            <a ng-if="profile.id != null" ng-click="submitComment()" class="btn btn-sm" style="float:right;" href="">Submit Comment</a>
 
 
 
