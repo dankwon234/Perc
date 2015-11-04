@@ -31,7 +31,7 @@ var fetchFile = function(path){
 
 var fetchFeaturedPosts = function(){
 	return new Promise(function (resolve, reject){
-		Post.find({featured:'yes'}, null, {limit:3, sort:{timestamp:-1}}, function(err, posts) {
+		Post.find({featured:'yes'}, null, {limit:5, sort:{timestamp:-1}}, function(err, posts) {
 			if (err) {reject(err); }
 			else { resolve(posts); }
 		});
