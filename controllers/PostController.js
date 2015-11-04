@@ -70,8 +70,6 @@ this.updatePosts = function(req, res, pkg){
 			communitiesArray.push(community.id);
 		}
 
-//		res.json({'confirmation':'success', 'communities':communitiesArray});
-
 		Post.find(req.query, null, {limit:0, sort:{timestamp:-1}}, function(err, posts) {
 			console.log('FETCH Posts');
 			if (err) {
@@ -82,6 +80,7 @@ this.updatePosts = function(req, res, pkg){
 			for (var j=0; j<posts.length; j++){
 				var post = posts[j];
 				post['communities'] = communitiesArray;
+				post['featured'] = (j<6) ? 'yes' : 'no'; // most recent 6 posts are featured.
 				post.save();
 			}
 
