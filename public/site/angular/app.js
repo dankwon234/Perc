@@ -3,6 +3,7 @@ var modules = [
   'BaseModule',
 	'HomeModule',
   'PostModule',
+  'ProfileModule',
   'CommunityModule',
   'CommunitiesModule',
   'EmailModule',

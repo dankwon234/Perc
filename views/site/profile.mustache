@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" ng-app="Perc" ng-controller="BaseController" ng-init="checkCurrentUser()">
+    <head>
+        {{>head}}
+        <meta property="og:title" content="{{postTitle}}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="{{postImage}}" />
+        <meta property="og:url" content="{{postUrl}}" />
+        <meta property="og:description" content="{{postDescription}}" />
+        <meta property="og:site_name" content="PERC" />        
+    </head>
+
+
+    <body ng-controller="ProfileController" ng-init="init()">
+        {{>modals}}
+        {{>nav}}
+
+        <div class="main-container">
+
+            <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
+                <div class="row-fluid">
+                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1400px">
+                        <sidebar ng-if="currentCommunity == null"></sidebar>
+                        <communitysidebar ng-if="currentCommunity != null"></communitysidebar>
+                    </div>
+
+
+                    <div class="col-md-9">
+
+                        <div class="row masonry mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
+
+                            <div style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <img align="left" style="height:120px;margin-right:16px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% publicProfile.image %>?crop=260" />
+                                        <h4 style="margin-bottom:0px">
+                                            <% generalService.capitalize(publicProfile.firstName) %> <% generalService.capitalize(publicProfile.lastName) %>
+                                        </h4>
+                                        <span><% generalService.capitalize(profile.title) %></span>
+                                        <p><% publicProfile.bio %></p>
+                                    </div>
+
+                                    <div class="col-md-2" style="text-align:right">
+                                        Member Since<br />
+                                        <% generalService.formattedDate(publicProfile.timestamp) %>
+                                        <div class="clearfix" style="margin-bottom:12px"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <br />
+                                    <div class="col-md-12">
+                                        <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                        <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
+                                        <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <!--end of row-->
+
+
+
+                    </div>
+                    <!--end of 9 col-->
+
+                </div>
+
+            </section>
+
+
+            
+            {{>footer}}
+
+        </div>
+        {{>scripts}}
+    </body>
+</html>
