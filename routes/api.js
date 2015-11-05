@@ -10,12 +10,14 @@ var companyController = require('../controllers/CompanyController.js');
 var communityController = require('../controllers/CommunityController.js');
 var postController = require('../controllers/PostController.js');
 var commentController = require('../controllers/CommentController.js');
+var conversationController = require('../controllers/ConversationController.js');
 var controllers = {
 	'profile':profileController,
 	'post':postController,
 	'community':communityController,
 	'comment':commentController,
-	'company':companyController
+	'company':companyController,
+	'conversation':conversationController
 };
 
 
