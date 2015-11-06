@@ -29,9 +29,7 @@
                             <div class="tabbed-content text-tabs" style="padding:32px">
                                 <ul class="tabs">
                                     <li class="active">
-                                        <div class="tab-title">
-                                            <span>Profile</span>
-                                        </div>
+                                        <div class="tab-title"><span>Profile</span></div>
 
                                         <div class="tab-content">
                                             <div class="row masonry mb40" style="padding:16px 16px 0px 16px;">
@@ -57,26 +55,49 @@
                                                     <div class="row">
                                                         <br />
                                                         <div class="col-md-12">
-                                                            <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
-                                                            <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
-                                                            <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
+                                                            <textarea ng-model="conversation.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                                            <a ng-click="startConversation()" class="btn btn-sm" style="float:right;" href="">Start Conversation</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--end of row-->
 
+                                            <div class="clearfix"></div>
+
+                                            <div class="row mb40" style="padding:48px 0px 0px 0px;">
+
+                                                <div class="col-sm-12">
+                                                    <h4 style="margin-bottom:16px">Conversations</h4>
+                                                    <ul class="accordion accordion-1">
+                                                        <li ng-repeat="conversation in publicProfile.conversations track by $index" ng-click="viewConversation(conversation)" >
+                                                            <div class="title" style="padding:24px;border:1px solid #ddd;background:#f9f9f9">
+                                                                <p>
+                                                                    <img align="left" style="width:84px;border-radius:42px;margin-right:16px" src="https://media-service.appspot.com/site/images/jmEX0eqY?crop=260" />
+                                                                    <span style="margin-right:16px"><% conversation.profile.name %></span><br />
+                                                                    <% conversation.text %>
+                                                                </p>
+                                                                <div style="text-align:right;padding:16px 16px 0px 16px;color:#fc4f4f;">
+                                                                    <span style="margin-right:16px">8 replies</span>
+                                                                    <span>Oct 12</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <!--end of accordion-->
+                                                </div>
+
+                                            </div>
+
+
                                         </div>
                                         <!-- End Tab Content -->
                                      </li>
 
-                                    <li>
+                                     <li>
                                         <div class="tab-title"><span>Work Samples</span></div>
-
-                                        <div class="tab-content">
-
+                                          <div class="tab-content">
                                             <div class="row">
-
                                                 <div ng-repeat="profile in currentCommunity.profiles track by $index" class="col-sm-4 post-snippet masonry-item mb40">
                                                     <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% profile.image %>?crop=320');height:120px">
                                                         <div style="height:120px;background:rgba(0,0,0,0.6);padding:16px;text-align:right">
