@@ -3,6 +3,7 @@ var profileCtr = angular.module('ProfileModule', []);
 profileCtr.controller('ProfileController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
 	$scope.publicProfile = null;
 	$scope.comment = {'text':'', 'profile':'', 'thread':''};
+	$scope.conversation = {'text':'', 'profile':'', 'board':''};
 
 	
 	$scope.init = function(){
@@ -15,6 +16,16 @@ profileCtr.controller('ProfileController', ['$scope', 'accountService', 'general
 				return;
 			
 			$scope.publicProfile = response.profile;
+			fetchConversations();
+		});
+	}
+
+	function fetchConversations(){
+		RestService.query({resource:'conversation', id:null, board:$scope.publicProfile.id}, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.publicProfile['conversations'] = response.conversations;
 		});
 	}
 
@@ -36,6 +47,32 @@ profileCtr.controller('ProfileController', ['$scope', 'accountService', 'general
 		});
 	}
 	
+
+	$scope.startConversation = function(){
+		if ($scope.profile.id == null){
+			$scope.conversation['profile'] = {'name':'anonymous', 'image':'vAcKMGDo'};
+		}
+		else {
+			var name = $scope.profile.firstName+' '+$scope.profile.lastName;
+			$scope.conversation['profile'] = {'id':$scope.profile.id, 'name':name, 'image':$scope.profile.image};
+		}
+
+		$scope.conversation['board'] = $scope.publicProfile.id;
+
+		RestService.post({resource:'conversation', id:null}, $scope.conversation, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.publicProfile.conversations.push(response.conversation);
+			$scope.conversation = {'text':'', 'profile':'', 'board':''};
+		});
+	}
+
+	$scope.viewConversation = function(conversation){
+		console.log('viewConversation: '+JSON.stringify(conversation));
+		
+
+	}
 	
 	
 
