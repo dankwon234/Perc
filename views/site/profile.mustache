@@ -73,7 +73,7 @@
                                                         <li ng-repeat="conversation in publicProfile.conversations track by $index" ng-click="viewConversation(conversation)" >
                                                             <div class="title" style="padding:24px;border:1px solid #ddd;background:#f9f9f9">
                                                                 <p>
-                                                                    <img align="left" style="width:84px;border-radius:42px;margin-right:16px" src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=260" />
+                                                                    <img align="left" style="width:84px;border-radius:42px;margin-right:16px" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
                                                                     <span style="margin-right:16px"><% conversation.profile.name %></span><br />
                                                                     <% conversation.text %>
                                                                 </p>
