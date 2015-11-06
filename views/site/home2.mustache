@@ -119,23 +119,24 @@
                                             <div class="row mb40">
 
                                                 <div ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item">
-                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% community.image %>?crop=320');height:120px">
+                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% community.image %>?crop=320');height:120px;text-align:right">
                                                         <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
                                                             <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% community.image %>?crop=260" />
-                                                            <h4 style="color:#fff;"><% community.name %></h4>
+                                                            <h4 style="color:#fff;line-height:20px;font-weight:400;font-size:18px">
+                                                                <% community.name %>
+                                                            </h4>
                                                         </div>
                                                     </div>
 
                                                     <div class="inner">
                                                         <br />
-                                                        <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% community.city.toUpperCase() %></span></a>
-                                                        <a ng-show="community.members.length>10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.members.length %> Members</span></a>
-
-                                                        <a ng-show="community.members.length<10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.numMembers %> Members</span></a>
+                                                        <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px;font-size:12px" class="mb10"><% generalService.capitalize(community.city) %></span></a>
+                                                        <a ng-show="community.members.length > 10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;font-size:12px" class="mb10"><% community.members.length %> Members</span></a>
+                                                        <a ng-show="community.members.length < 10" href="#"><span style="background:#eee;padding:3px;border:1px solid #ddd;font-size:12px" class="mb10"><% community.numMembers %> Members</span></a>
 
                                                         <br /><br /><hr>
                                                         <p style="height:180px">
-                                                            <% generalService.truncatedText(community.description, 300) %>
+                                                            <% generalService.truncatedText(community.description, 260) %>
                                                         </p>
                                                         <a ng-show="profile.communities.indexOf(community.id) == -1" class="btn btn-sm" ng-click="joinCommunity(community)" href="">Join</a>
 
