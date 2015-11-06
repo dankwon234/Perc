@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 
 var ConversationSchema = new mongoose.Schema({
-	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
+	profile: {type:mongoose.Schema.Types.Mixed, default:{}}, // author of the conversation - whoever started it.
+	board: {type:String, trim:true, default:''}, // the wall the conversation belongs to
 	title: {type:String, trim:true, default:''},
 	text: {type:String, trim:true, default:''},
 	link: {type:String, trim:true, default:''},
@@ -16,6 +17,7 @@ var ConversationSchema = new mongoose.Schema({
 ConversationSchema.methods.summary = function() {
 	var summary = {
 		'profile':this.profile,
+		'board':this.board,
 		'title':this.title,
 		'text':this.text,
 		'link':this.link,
