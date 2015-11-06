@@ -77,14 +77,10 @@
                                         <!-- End Tab Content -->
                                      </li>
 
-                                    <li>
-                                        <div class="tab-title">
-                                            <span>Community</span>
-                                        </div>
+                                    <li ng-show="currentCommunity!=null" >
+                                        <div class="tab-title"><span>Community</span></div>
 
                                         <div class="tab-content">
-
-
                                             <div class="row">
 
                                                 <div ng-repeat="profile in currentCommunity.profiles track by $index" class="col-sm-4 post-snippet masonry-item mb40">
@@ -114,6 +110,48 @@
                                         </div>
 
                                     </li>
+                                    <li ng-show="currentCommunity==null" >
+                                        <div class="tab-title"><span>Communities</span></div>
+
+                                        <div class="tab-content">
+
+
+                                            <div class="row mb40">
+
+                                                <div ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item">
+                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% community.image %>?crop=320');height:120px">
+                                                        <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
+                                                            <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% community.image %>?crop=260" />
+                                                            <h4 style="color:#fff;"><% community.name %></h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="inner">
+                                                        <br />
+                                                        <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% community.city.toUpperCase() %></span></a>
+                                                        <a ng-show="community.members.length>10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.members.length %> Members</span></a>
+
+                                                        <a ng-show="community.members.length<10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% community.numMembers %> Members</span></a>
+
+                                                        <br /><br /><hr>
+                                                        <p style="height:180px">
+                                                            <% generalService.truncatedText(community.description, 300) %>
+                                                        </p>
+                                                        <a ng-show="profile.communities.indexOf(community.id) == -1" class="btn btn-sm" ng-click="joinCommunity(community)" href="">Join</a>
+
+                                                        <a ng-show="profile.id != null && profile.communities.indexOf(community.id) != -1" class="btn btn-sm" href="/">View</a>
+                                                    </div>
+                                                </div>
+                                                <!--end of snippet-->
+
+                                            </div>
+                                            <!--end of row-->
+
+                                        </div>
+
+                                    </li>
+
+
                                 </ul>
                             </div>
                             <!--end of text tabs-->
