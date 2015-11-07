@@ -34,7 +34,7 @@
                                     <div class="col-md-12">
                                         <img align="left" style="width:84px;border-radius:42px;margin-right:16px" ng-src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
                                         <h4 style="margin-bottom:0px">
-                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% generalService.capitalize(conversation.profile.name) %></a>
+                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/profile/<% conversation.profile.id %>"><% generalService.capitalize(conversation.profile.name) %></a>
                                         </h4>
                                         <p><% conversation.text %></p>
                                         <div class="mb30" style="text-align:right;padding:16px 0px 0px 16px;">
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-md-2" style="text-align:center">
                                         <img ng-if="comment.profile.image.length>0" style="width:90px;border-radius:45px" ng-src="https://media-service.appspot.com/site/images/<% comment.profile.image %>?crop=360" />
-                                        <h5 style="margin-bottom:0px"><% generalService.capitalize(comment.profile.name) %></h5>
+                                        <h5 style="margin-bottom:0px"><a style="color:#444" href="/site/profile/<% comment.profile.id %>"><% generalService.capitalize(comment.profile.name) %></a></h5>
                                     </div>
                                 </div>
                             </div>
