@@ -5,7 +5,7 @@
     </head>
 
 
-    <body ng-cloak>
+    <body ng-cloak ng-controller="AccountController" ng-init="init()">
         {{>modals}}
         {{>nav}}
 
@@ -26,7 +26,7 @@
                 </div>
                 <!--end of container-->
                 <ol class="breadcrumb breadcrumb-2">
-                    <li class="active">WeWork</li>
+                    <li class="active"><% currentCommunity.name %></li>
                     <li ng-show="profile.title.length > 0" class="active"><% profile.title %></li>
                     <li><a ng-click="logout()" href="">Log Out</a></li>
                 </ol>
@@ -35,7 +35,8 @@
             <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
                 <div class="row-fluid">
                     <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:2100px">
-                        <sidebar></sidebar>
+                        <sidebar ng-if="currentCommunity == null"></sidebar>
+                        <communitysidebar ng-if="currentCommunity != null"></communitysidebar>
                     </div>
 
 
@@ -92,13 +93,9 @@
 
             </section>
 
-
-
-
-            
             {{>footer}}
-
         </div>
+        
         {{>scripts}}
     </body>
 </html>
