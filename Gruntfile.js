@@ -29,8 +29,6 @@ module.exports = function(grunt) {
                     './public/site/js/flexslider.min.js',
                     './public/site/js/lightbox.min.js',
                     './public/site/js/masonry.min.js',
-                    './public/site/js/twitterfetcher.min.js',
-                    './public/site/js/spectragram.min.js',
                     './public/site/js/ytplayer.min.js',
                     './public/site/js/countdown.min.js',
                     './public/site/js/smooth-scroll.min.js',
