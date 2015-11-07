@@ -9,3 +9,7 @@
 
 
 }
+
+.ng-cloak {
+	display:none;
+}
