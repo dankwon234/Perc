@@ -57,7 +57,6 @@ accountService.factory('accountService', ['RestService', function(RestService){
 	};
 	
 	accountManager.updateProfile = function(profile, completion){
-		
 		RestService.update({resource:'profile', id:profile.id}, profile, function(response){
 			console.log('ACCOUNT SERVICE RESPONSE == '+JSON.stringify(response));
 			if (response.confirmation != 'success'){
@@ -71,6 +70,7 @@ accountService.factory('accountService', ['RestService', function(RestService){
 				completion(response, null);
 		});
 	};
+
 
 	accountManager.login = function(credentials, completion){
 		if (credentials.email.length==0){
@@ -102,6 +102,22 @@ accountService.factory('accountService', ['RestService', function(RestService){
 		});
 	};
 	
+	accountManager.logout = function(){
+		RestService.query({resource:'logout', id:null}, function(response){
+			console.log('ACCOUNT SERVICE RESPONSE == '+JSON.stringify(response));
+
+			if (response.confirmation != 'success'){
+				if (completion != null)
+					completion(null, {'message':response.message});
+				return;
+			}
+			
+			if (completion != null)
+				completion(response);
+		});
+	}
+
+
 	function checkField(profile, fieldId){
 		var inputField = document.getElementById(fieldId);
 		inputField.style.border = (profile[fieldId].length > 0) ? 'none' : '1px solid red'

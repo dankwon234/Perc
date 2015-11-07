@@ -55,6 +55,18 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 			window.location.href = '/site/account';
 		});
 	}
+
+	$scope.logout = function(){
+		accountService.logout(function(response, error){
+			if (error != null){
+				$scope.loading = false;
+                alert(error.message);
+				return;
+			}
+			
+			window.location.href = '/';
+		});
+	}
 	
   	$scope.profileImageSelected = function(files, property, media){
 	    uploadService.uploadFiles({'files':files, 'media':media}, function(response, error){
