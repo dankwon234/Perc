@@ -11,36 +11,38 @@ postCtr.controller('ConversationController', ['$scope', 'accountService', 'gener
 			return;
 
 		RestService.query({resource:'conversation', id:requestInfo.identifier}, function(response){
+			console.log('ConversationController: '+JSON.stringify(response));
 			if (response.confirmation != 'success')
 				return;
 			
 			$scope.conversation = response.conversation;
+			fetchConversationComments();
 		});
 	}
 
 
-	function fetchPostComments(){
-		RestService.query({resource:'comment', id:null, thread:$scope.post.id}, function(response){
+	function fetchConversationComments(){
+		RestService.query({resource:'comment', id:null, thread:$scope.conversation.id}, function(response){
 			if (response.confirmation != 'success')
 				return;
 			
-			$scope.post['comments'] = response.comments;
+			$scope.conversation['comments'] = response.comments;
 		});
 	}
 
-	$scope.submitComment = function(){
+	$scope.submitReply = function(){
 		if ($scope.profile.id == null)
 			return;
 
 		$scope.comment['profile'] = {'id':$scope.profile.id, 'name':$scope.profile.firstName, 'image':$scope.profile.image};
-		$scope.comment['thread'] = $scope.post.id;
+		$scope.comment['thread'] = $scope.conversation.id;
 		console.log('submitComment: '+JSON.stringify($scope.comment));
 
 		RestService.post({resource:'comment', id:null}, $scope.comment, function(response){
 			if (response.confirmation != 'success')
 				return;
 			
-			$scope.post.comments.push(response.comment);
+			$scope.conversation.comments.push(response.comment);
 			$scope.comment = {'text':'', 'profile':'', 'thread':''};
 		});
 	}
