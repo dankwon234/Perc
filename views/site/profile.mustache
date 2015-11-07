@@ -77,9 +77,9 @@
                                                                     <span style="margin-right:16px"><% conversation.profile.name %></span><br />
                                                                     <% conversation.text %>
                                                                 </p>
-                                                                <div style="text-align:right;padding:16px 16px 0px 16px;color:#fc4f4f;">
-                                                                    <span style="margin-right:16px"><% conversation.numComments %> replies</span>
-                                                                    <span><% generalService.formattedDate(conversation.timestamp) %></span>
+                                                                <div style="text-align:right;padding:16px 0px 0px 16px;">
+                                                                    <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
+                                                                    <span style="border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
                                                                 </div>
                                                             </div>
                                                         </li>
