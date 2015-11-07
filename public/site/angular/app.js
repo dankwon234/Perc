@@ -97,6 +97,23 @@ app.directive('communitysidebar', function() {
   };
 });
 
+app.directive('post', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      templateUrl: "/site/angular/directives/post.html"
+  };
+});
+
+app.directive('profile', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      templateUrl: "/site/angular/directives/profile.html"
+  };
+});
+
+
 app.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);

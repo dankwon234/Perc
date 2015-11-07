@@ -35,36 +35,7 @@
                                                 </h4>
                                             </div>
 
-                                            <div ng-repeat="post in visiblePosts track by $index" style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;border-top:none">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        <img align="left" style="height:120px;margin-right:16px;border:1px solid #ddd;background:#fff" ng-src="https://media-service.appspot.com/site/images/<% post.image %>?crop=260" />
-                                                        <h4 style="margin-bottom:0px">
-                                                            <a style="font-weight:400;color:#000;font-size:20px" href="/site/post/<% post.id %>"><% post.title %></a>
-                                                        </h4>
-                                                        <p><% post.text %></p>
-                                                    </div>
-
-                                                    <div class="col-md-2" style="text-align:right">
-                                                        <% generalService.formattedDate(post.timestamp) %>
-                                                        <div class="clearfix" style="margin-bottom:12px"></div>
-                                                        <a ng-if="currentCommunity == null" class="btn btn-sm" data-toggle="modal" data-target="#signupModal" href="">Reply</a>
-                                                        <a ng-if="currentCommunity!=null && selectedPost!=post" ng-click="selectPost(post)" class="btn btn-sm" href="">Reply</a>
-                                                    </div>
-                                                </div>
-                                                <div class="row" ng-show="selectedPost == post">
-                                                    <br />
-                                                    <div class="col-md-12">
-                                                        <textarea ng-model="reply.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
-                                                        <a ng-click="replyToPost()" class="btn btn-sm" style="float:right;" href="">Send</a>
-                                                        <a ng-click="unselectPost()" class="btn btn-sm" style="float:right;margin-right:12px" href="">Cancel</a>
-                                                    </div>
-                                                </div>
-                                                <br />
-
-                                            </div>
-
-
+                                            <post ng-repeat="post in visiblePosts track by $index" style="width:100%;min-height:136px;padding:20px 20px 0px 20px;background:#f9f9f9;border:1px solid #ddd;border-top:none"></post>
 
                                             <div ng-show="pages.length > 1" style="text-align:center;padding-top:16px">
                                                 <ul class="pagination" style="margin-top:0px;float:center">
@@ -77,40 +48,19 @@
                                         <!-- End Tab Content -->
                                      </li>
 
-                                    <li ng-show="currentCommunity!=null">
+                                    <li ng-show="currentCommunity != null">
                                         <div class="tab-title"><span>Community</span></div>
 
                                         <div class="tab-content">
                                             <div class="row">
-
-                                                <div ng-repeat="profile in currentCommunity.profiles track by $index" class="col-sm-4 post-snippet masonry-item mb40">
-                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% profile.image %>?crop=320');height:120px">
-                                                        <div style="height:120px;background:rgba(0,0,0,0.6);padding:16px;text-align:right">
-                                                            <img align="left" style="width:88px;margin-right:12px;border-radius:44px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=260" />
-                                                            <h4 style="color:#fff;line-height:20px">
-                                                                <a style="color:#fff;font-weight:400;font-size:18px;" href="/site/profile/<% profile.id %>"><% generalService.capitalize(profile.firstName) %> <% generalService.capitalize(profile.lastName) %></a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="inner">
-                                                        <br />
-                                                        <a ng-show="profile.title.length>0" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% profile.title %></span></a>
-
-                                                        <br /><br /><hr>
-                                                        <p style="height:160px"><% generalService.truncatedText(profile.bio, 170) %></p>
-                                                        <a class="btn btn-sm" href="/site/profile/<% profile.id %>">View</a>
-                                                    </div>
-                                                </div>
-                                                <!--end of snippet-->
-
+                                                <profile ng-repeat="profile in currentCommunity.profiles track by $index" class="col-sm-4 post-snippet masonry-item mb40"></profile>
                                             </div>
                                             <!--end of row-->
 
                                         </div>
 
                                     </li>
-                                    <li ng-show="currentCommunity==null" >
+                                    <li ng-show="currentCommunity == null" >
                                         <div class="tab-title"><span>Communities</span></div>
 
                                         <div class="tab-content">

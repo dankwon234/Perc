@@ -1,0 +1,19 @@
+                                                <div>
+                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% profile.image %>?crop=320');height:120px">
+                                                        <div style="height:120px;background:rgba(0,0,0,0.6);padding:16px;text-align:right">
+                                                            <img align="left" style="width:88px;margin-right:12px;border-radius:44px;border:1px solid #ddd" ng-src="https://media-service.appspot.com/site/images/<% profile.image %>?crop=260" />
+                                                            <h4 style="color:#fff;line-height:20px">
+                                                                <a style="color:#fff;font-weight:400;font-size:18px;" href="/site/profile/<% profile.id %>"><% generalService.capitalize(profile.firstName) %> <% generalService.capitalize(profile.lastName) %></a>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="inner">
+                                                        <br />
+                                                        <a ng-show="profile.title.length>0" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% profile.title %></span></a>
+
+                                                        <br /><br /><hr>
+                                                        <p style="height:160px"><% generalService.truncatedText(profile.bio, 170) %></p>
+                                                        <a class="btn btn-sm" href="/site/profile/<% profile.id %>">View</a>
+                                                    </div>
+                                                </div>
