@@ -9,23 +9,43 @@
         {{>nav}}
 
         <div class="main-container">
-            <section class="page-title page-title-3 image-bg overlay">
-                <div class="background-image-holder">
-                    <img alt="Background Image" class="background-image" src="/site/img/cover15.jpg" />
-                </div>
+
+            <section class="bg-secondary">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 text-center">
-                            <h3 class="uppercase mb0">Communities</h3>
+                    <div class="row v-align-children">
+                        <div class="col-md-5 col-sm-6 text-center mb-xs-24">
+                            <a href="#">
+                                <h2 class="uppercase  mb16">Communities</h2>
+                            </a>
+                            <h6 class="uppercase">Follow Us For Updates</h6>
+                            <p class="lead mb0">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+                            </p>
                         </div>
+
+                        <div class="col-md-7 col-sm-6 text-center">
+                            <div class="row">
+
+                                <div ng-repeat="community in communities track by $index" class="col-md-4 mb20" style="padding:24px;">
+                                    <a target="_blank" href="#">
+                                        <img style="width:60%;border:1px solid #ddd" src="https://media-service.appspot.com/site/images/<% community.image %>?crop=320">
+                                    </a>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
                     </div>
                     <!--end of row-->
                 </div>
+                <!--end of container-->
             </section>
 
 
-
-            <section class="bg-secondary">
+            <section>
                 <div class="container">
 
                     <div class="row">
