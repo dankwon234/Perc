@@ -13,6 +13,7 @@ var PostSchema = new mongoose.Schema({
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}},
 	numComments: {type:Number, default:0},
 	tags: {type:Array, default:[]},
+	viewed: {type:Array, default:[]},
 	thread: {type:String, default:''},
 	timestamp: {type:Date, default:Date.now},
 });
@@ -32,6 +33,7 @@ PostSchema.methods.summary = function() {
 		'image':this.image,
 		'thread':this.thread,
 		'tags':this.tags,
+		'viewed':this.viewed,
 		'timestamp':this.timestamp,
 		'id':this._id
 	};
