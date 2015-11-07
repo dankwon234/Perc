@@ -102,7 +102,7 @@ accountService.factory('accountService', ['RestService', function(RestService){
 		});
 	};
 	
-	accountManager.logout = function(){
+	accountManager.logout = function(completion){
 		RestService.query({resource:'logout', id:null}, function(response){
 			console.log('ACCOUNT SERVICE RESPONSE == '+JSON.stringify(response));
 
