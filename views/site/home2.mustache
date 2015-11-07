@@ -26,6 +26,7 @@
                                         <div class="tab-title">
                                             <span>Opportunities</span>
                                         </div>
+                                        
                                         <div class="tab-content">
                                             <div style="width:100%;padding:20px;background:#fff;border:1px solid #ddd">
                                                 <h4 style="margin-bottom:0px">
@@ -49,7 +50,9 @@
                                      </li>
 
                                     <li ng-show="currentCommunity != null">
-                                        <div class="tab-title"><span>Community</span></div>
+                                        <div class="tab-title">
+                                            <span>Community</span>
+                                        </div>
 
                                         <div class="tab-content">
                                             <div class="row">
@@ -61,46 +64,19 @@
 
                                     </li>
                                     <li ng-show="currentCommunity == null" >
-                                        <div class="tab-title"><span>Communities</span></div>
+                                        <div class="tab-title">
+                                            <span>Communities</span>
+                                        </div>
 
                                         <div class="tab-content">
-
                                             <div class="row mb40">
+                                                <community ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item mb40"></community>
 
-                                                <div ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item mb40">
-                                                    <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% community.image %>?crop=320');height:120px;text-align:right">
-                                                        <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
-                                                            <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% community.image %>?crop=260" />
-                                                            <h4 style="color:#fff;line-height:18px;font-weight:400;font-size:16px">
-                                                                <% community.name %>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="inner">
-                                                        <br />
-                                                        <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px;font-size:12px" class="mb10"><% generalService.capitalize(community.city) %></span></a>
-                                                        <a ng-show="community.members.length > 10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;font-size:12px" class="mb10"><% community.members.length %> Members</span></a>
-                                                        <a ng-show="community.members.length < 10" href="#"><span style="background:#eee;padding:3px;border:1px solid #ddd;font-size:12px" class="mb10"><% community.numMembers %> Members</span></a>
-
-                                                        <br /><br /><hr>
-                                                        <p style="height:180px">
-                                                            <% generalService.truncatedText(community.description, 220) %>
-                                                        </p>
-                                                        <a ng-show="profile.communities.indexOf(community.id) == -1" class="btn btn-sm" ng-click="joinCommunity(community)" href="">Join</a>
-
-                                                        <a ng-show="profile.id != null && profile.communities.indexOf(community.id) != -1" class="btn btn-sm" href="/">View</a>
-                                                    </div>
-                                                </div>
-                                                <!--end of snippet-->
-
-                                            </div>
-                                            <!--end of row-->
+                                            </div><!--end of row-->
 
                                         </div>
 
                                     </li>
-
 
                                 </ul>
                             </div>

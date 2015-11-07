@@ -113,6 +113,14 @@ app.directive('profile', function() {
   };
 });
 
+app.directive('community', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      templateUrl: "/site/angular/directives/community.html"
+  };
+});
+
 
 app.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
