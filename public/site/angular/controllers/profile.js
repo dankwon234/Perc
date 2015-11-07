@@ -70,8 +70,7 @@ profileCtr.controller('ProfileController', ['$scope', 'accountService', 'general
 
 	$scope.viewConversation = function(conversation){
 		console.log('viewConversation: '+JSON.stringify(conversation));
-		
-
+		window.location.href = '/site/conversation/'+conversation.id;
 	}
 	
 	
