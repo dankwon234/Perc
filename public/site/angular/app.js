@@ -1,6 +1,7 @@
 
 var modules = [
   'BaseModule',
+  'AccountModule',
 	'HomeModule',
   'PostModule',
   'ProfileModule',
