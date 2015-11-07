@@ -36,7 +36,7 @@
 
                                     <br /><br /><hr>
                                     <p style="height:180px">
-                                        <% generalService.truncatedText(selectedCommunity.description, 300) %>
+                                        <% generalService.truncatedText(selectedCommunity.description, 220) %>
                                     </p>
                                     <a ng-show="profile.communities.indexOf(selectedCommunity.id) == -1" class="btn btn-sm" ng-click="joinCommunity(community)" href="">Join</a>
 
