@@ -50,7 +50,6 @@ postCtr.controller('ConversationController', ['$scope', 'accountService', 'gener
 				if (response.confirmation != 'success')
 					return;
 				
-				$scope.conversation = response.conversation;
 			});
 
 
