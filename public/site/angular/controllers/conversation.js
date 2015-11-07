@@ -44,6 +44,16 @@ postCtr.controller('ConversationController', ['$scope', 'accountService', 'gener
 			
 			$scope.conversation.comments.push(response.comment);
 			$scope.comment = {'text':'', 'profile':'', 'thread':''};
+
+			$scope.conversation['numComments'] = $scope.conversation.numComments+1;
+			RestService.put({resource:'conversation', id:$scope.conversation.id}, $scope.conversation, function(response){
+				if (response.confirmation != 'success')
+					return;
+				
+				$scope.conversation = response.conversation;
+			});
+
+
 		});
 	}
 	
