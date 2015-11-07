@@ -1,7 +1,7 @@
 var communitiesCtr = angular.module('CommunitiesModule', []);
 
 communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
-    $scope.communities = ['','','','','','','','','','','','','','','','','','']; // need placeholders here to activate the js that animates the post panels
+    $scope.communities = null;
     $scope.selectedCommunity = null;
 
 
@@ -29,7 +29,6 @@ communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 
     		return;
     	}
 
-//    	$scope.profile.communities.unshift(community.id); // add at top of array
         $scope.profile['communities'] = [community.id] // for now, can only join one comminity
     	accountService.updateProfile($scope.profile, function(){
 	    	community.members.push($scope.profile.id);
@@ -40,7 +39,6 @@ communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 
 	            console.log('CommunitiesController: '+JSON.stringify(response));
 	            window.location.href = '/';
 	        });
-
     	});
     }
 
