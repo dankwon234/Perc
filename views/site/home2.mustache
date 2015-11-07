@@ -77,7 +77,7 @@
                                         <!-- End Tab Content -->
                                      </li>
 
-                                    <li ng-show="currentCommunity!=null" >
+                                    <li ng-show="currentCommunity!=null">
                                         <div class="tab-title"><span>Community</span></div>
 
                                         <div class="tab-content">
@@ -115,14 +115,13 @@
 
                                         <div class="tab-content">
 
-
                                             <div class="row mb40">
 
                                                 <div ng-repeat="community in communities track by $index" class="col-sm-4 post-snippet masonry-item mb40">
                                                     <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% community.image %>?crop=320');height:120px;text-align:right">
                                                         <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
                                                             <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% community.image %>?crop=260" />
-                                                            <h4 style="color:#fff;line-height:20px;font-weight:400;font-size:18px">
+                                                            <h4 style="color:#fff;line-height:18px;font-weight:400;font-size:16px">
                                                                 <% community.name %>
                                                             </h4>
                                                         </div>
