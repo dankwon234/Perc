@@ -4,6 +4,7 @@ var modules = [
   'AccountModule',
 	'HomeModule',
   'PostModule',
+  'ConversationModule',
   'ProfileModule',
   'CommunityModule',
   'CommunitiesModule',
