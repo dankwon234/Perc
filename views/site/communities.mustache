@@ -14,24 +14,46 @@
                 <div class="container">
                     <div class="row v-align-children">
                         <div class="col-md-5 col-sm-6 text-center mb-xs-24">
-                            <a href="#">
-                                <h2 class="uppercase  mb16">Communities</h2>
-                            </a>
-                            <h6 class="uppercase">Follow Us For Updates</h6>
+                            <a href="#"><h2 class="uppercase  mb16">Communities</h2></a>
                             <p class="lead mb0">
                                 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
                             </p>
+
+                            <div class="post-snippet masonry-item" style="padding:20px 64px 64px 64px">
+                                <div style="width:90%;margin:auto;background:url('https://media-service.appspot.com/site/images/<% selectedCommunity.image %>?crop=320');height:120px">
+                                    <div style="height:120px;background:rgba(0,0,0,0.6);padding:24px">
+                                        <img align="left" style="width:120px;margin-right:12px;" ng-src="https://media-service.appspot.com/site/images/<% selectedCommunity.image %>?crop=260" />
+                                        <h4 style="color:#fff;"><% selectedCommunity.name %></h4>
+                                    </div>
+                                </div>
+
+                                <div class="inner">
+                                    <br />
+                                    <a href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;margin-right:6px" class="mb10"><% selectedCommunity.city.toUpperCase() %></span></a>
+                                    <a ng-show="selectedCommunity.members.length>10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% selectedCommunity.members.length %> Members</span></a>
+
+                                    <a ng-show="selectedCommunity.members.length<10" href="#"><span style="background:#eee;padding:4px;border:1px solid #ddd;" class="mb10"><% selectedCommunity.numMembers %> Members</span></a>
+
+                                    <br /><br /><hr>
+                                    <p style="height:180px">
+                                        <% generalService.truncatedText(selectedCommunity.description, 300) %>
+                                    </p>
+                                    <a ng-show="profile.communities.indexOf(selectedCommunity.id) == -1" class="btn btn-sm" ng-click="joinCommunity(community)" href="">Join</a>
+
+                                    <a ng-show="profile.id != null && profile.communities.indexOf(selectedCommunity.id) != -1" class="btn btn-sm" href="/">View</a>
+                                </div>
+                            </div>
+                            <!--end of snippet-->
+
                         </div>
 
                         <div class="col-md-7 col-sm-6 text-center">
                             <div class="row">
-
                                 <div ng-repeat="community in communities track by $index" class="col-md-3 mb20" style="padding:12px;">
-                                    <a target="_blank" href="#">
-                                        <img style="width:80%;border:1px solid #ddd" src="https://media-service.appspot.com/site/images/<% community.image %>?crop=320">
+                                    <a ng-click="selectCommunity(community)" href="">
+                                      <img style="width:80%;border:1px solid #ddd" src="https://media-service.appspot.com/site/images/<% community.image %>?crop=320">
                                     </a>
                                 </div>
-
 
                             </div>
 
