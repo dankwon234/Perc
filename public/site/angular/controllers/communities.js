@@ -17,8 +17,9 @@ communitiesCtr.controller('CommunitiesController', ['$scope', 'accountService', 
 
     $scope.selectCommunity = function(community){
         $scope.selectedCommunity = community;
-
+        document.getElementById('topAnchor').click();
     }
+    
 
     $scope.joinCommunity = function(community){
     	if ($scope.profile.id == null)
