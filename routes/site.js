@@ -1,4 +1,5 @@
 var Post = require('../models/Post.js');
+var Conversation = require('../models/Conversation.js');
 var express = require('express');
 var router = express.Router();
 
@@ -18,12 +19,12 @@ router.get('/:page/:id', function(req, res, next) {
 		var postId = req.params.id;
 		Post.findById(postId, function(err, post){
 			if (err){
-				res.json({'confirmation':'fail', 'message':'Post '+postId+' not found'});
+				res.render('site/'+page, {});
 				return;
 			}
 			
 			if (post == null){
-				res.json({'confirmation':'fail', 'message':'Post '+postId+' not found'});
+				res.render('site/'+page, {});
 				return;
 			}
 
@@ -38,8 +39,35 @@ router.get('/:page/:id', function(req, res, next) {
 	}
 
 
+	if (page == 'conversation'){ // special handler for conversation page for facebook tags
+		var conversationId = req.params.id;
 
-	res.render('site/'+page, { title: 'Express' });
+		Conversation.findById(conversationId, function(err, conversation){
+			if (err){
+				res.render('site/'+page, {});
+				return;
+			}
+			
+			if (conversation == null){
+				res.render('site/'+page, {});
+				return;
+			}
+
+			var url = 'http://www.getpercs.com/site/conversation/'+conversation.id;
+			var imageUrl = 'http://www.getpercs.com/site/img/iconRound.png';
+			var text = conversation.text;
+			if (text > 150)
+				text = text.substring(0, 150)+'...';
+
+			var fbTags = {postTitle:'Perc Board', postImage:imageUrl, postUrl:url, postDescription:text};
+			res.render('site/'+page, fbTags);
+			return;
+		});
+
+		return;
+	}
+
+	res.render('site/'+page, { });
 });
 
 
