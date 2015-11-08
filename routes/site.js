@@ -59,7 +59,7 @@ router.get('/:page/:id', function(req, res, next) {
 			if (text > 150)
 				text = text.substring(0, 150)+'...';
 
-			var fbTags = {postTitle:'Perc Board', postImage:imageUrl, postUrl:url, postDescription:text};
+			var fbTags = {postTitle:conversation.title, postImage:imageUrl, postUrl:url, postDescription:text};
 			res.render('site/'+page, fbTags);
 			return;
 		});
