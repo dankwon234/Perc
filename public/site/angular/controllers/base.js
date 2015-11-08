@@ -20,6 +20,20 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 	}
 
 	$scope.updateProfile = function(){
+		var score = 0;
+		if ($scope.profile.bio.length>0)
+			score++;
+
+		if ($scope.profile.image != 'vAcKMGDo')
+			score++;
+		
+		if ($scope.profile.title.length>0)
+			score++;
+
+		if ($scope.profile.score == score)
+			$scope.profile['score'] = score;
+
+		
 		accountService.updateProfile($scope.profile, function(response){
 			if (response.confirmation == 'success')
 				$scope.profile = response.profile;
