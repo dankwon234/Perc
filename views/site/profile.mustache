@@ -55,7 +55,10 @@
                                                     <div class="row">
                                                         <br />
                                                         <div class="col-md-12">
-                                                            <textarea ng-model="conversation.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                                            <input class="form-control" style="background:#fff;height:36px;border:1px solid #ddd" type="text" placeholder="Subject" ng-model="conversation.tite" />
+
+                                                            <textarea placeholder="Text" ng-model="conversation.text" class="form-control" style="width:100%;height:72px;background:#fff;border:1px solid #ddd"></textarea>
+                                                            
                                                             <a ng-click="startConversation()" class="btn btn-sm" style="float:right;" href="">Start Conversation</a>
                                                         </div>
                                                     </div>
