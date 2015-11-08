@@ -31,7 +31,7 @@ this.handleGet = function(req, res, pkg){
 	delete params['limit'];
 	
 	/* Query by filters passed into parameter string: */
-	Profile.find(req.query, null, {limit:limit, sort:{timestamp:-1}}, function(err, profiles) {
+	Profile.find(req.query, null, {limit:limit, sort:{points:-1}}, function(err, profiles) {
 		console.log('FETCH PROFILES');
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
