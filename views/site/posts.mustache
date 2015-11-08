@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" ng-app="Perc" ng-controller="BaseController" ng-init="checkCurrentUser()">
+    <head>
+        {{>head}}
+    </head>
+
+
+    <body ng-controller="PostsController" ng-init="init()">
+        {{>nav}}
+
+        <!-- Post Job Modal -->
+        <div class="modal fade" id="postJobModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div style="width:70%;min-width:360px;margin-left:auto;margin-right:auto;" class="modal-dialog">
+              <button type="button" class="close" data-dismiss="modal" style="margin-right:12px;margin-top:12px">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
+              <div style="background:rgba(249, 249, 249, 0.98);border:1px solid #ddd;padding:32px 16px 0px 16px;min-height:300px;text-align:center">
+                    <h3 style="margin-bottom:12px;margin-top:0px;text-align:center">Post</h3>
+                    <hr />
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="contact-form" style="margin-top:20px;width:94%;margin-left:auto;margin-right:auto">
+                            <input style="background:#fff" ng-model="selectedPost.title" type="text" placeholder="Title" class="form-control">
+                            <input style="background:#fff" ng-model="selectedPost.contact" type="text" placeholder="Contact Info (email or phone)" class="form-control">
+                            <div ng-file-drop="uploadImage($files, 'selectedPost', 'images')" style="background:#ddd;height:84px;padding:6px">
+                              <img ng-show="selectedPost.image.length > 0" align="left" style="width:72px" ng-src="https://media-service.appspot.com/site/images/<% selectedPost.image %>?crop=260" />
+                              Drag &amp; Drop Image Here
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="contact-form" style="margin-top:20px;width:94%;margin-left:auto;margin-right:auto">
+                            <textarea style="background:#fff;border:1px solid #ddd;height:232px" ng-model="selectedPost.text" placeholder="Description"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <ul>
+                            <li ng-repeat="community in communities track by $index">
+                                <span ng-show="selectedPost.communities.indexOf(community.id)==-1">+</span>
+                                <span ng-show="selectedPost.communities.indexOf(community.id)!=-1">-</span>
+                                <a ng-click="toggleCommunity(community)" href=""><% community.name %></a>
+                            </li>
+                        </ul>
+                      </div>
+
+                    </div>
+
+
+                    <div class="row" style="background:#fff;border-top:1px solid #ddd;margin-top:0px;padding-top:24px">
+                        <button style="background:#fff" data-dismiss="modal" type="submit" class="btn btn-large" ng-click="updatePost()">Update</button>
+                    </div>
+              </div>
+                
+          </div>
+        </div>
+
+        <div class="main-container">
+
+            <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
+                <div class="row-fluid">
+                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1400px">
+                        <sidebar></sidebar>
+                    </div>
+
+
+                    <div class="col-md-9">
+
+                        <div class="row masonry mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
+
+                            <ul>
+                                <li ng-repeat="post in posts track by $index">
+                                    <a ng-click="selectPost(post)" data-toggle="modal" data-target="#postJobModal" href=""><% post.title %></a>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+                        <!--end of row-->
+
+                    </div>
+                    <!--end of 9 col-->
+
+                </div>
+
+            </section>
+            
+            {{>footer}}
+
+        </div>
+        {{>scripts}}
+    </body>
+</html>
