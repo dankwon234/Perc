@@ -20,18 +20,18 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 	}
 
 	$scope.updateProfile = function(){
-		var score = 0;
+		var points = 0;
 		if ($scope.profile.bio.length>0)
-			score++;
+			points++;
 
 		if ($scope.profile.image != 'vAcKMGDo')
-			score++;
+			points++;
 		
 		if ($scope.profile.title.length>0)
-			score++;
+			points++;
 
-		if ($scope.profile.score == score)
-			$scope.profile['score'] = score;
+		if ($scope.profile.points < points)
+			$scope.profile['points'] = points;
 
 		
 		accountService.updateProfile($scope.profile, function(response){
