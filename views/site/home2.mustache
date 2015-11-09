@@ -51,6 +51,29 @@
 
                                     <li ng-show="currentCommunity != null">
                                         <div class="tab-title">
+                                            <span>Conversations</span>
+                                        </div>
+
+                                        <div class="tab-content">
+
+                                            <div ng-repeat="conversation in currentCommunity.conversations track by $index" class="title" style="padding:24px;border:1px solid #ddd;background:#f9f9f9">
+                                                <p>
+                                                    <img align="left" style="width:84px;border-radius:42px;margin-right:16px" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
+                                                    <span style="margin-right:16px"><% conversation.title %></span><br />
+                                                    <% conversation.text %>
+                                                </p>
+                                                <div style="text-align:right;padding:16px 0px 0px 16px;">
+                                                    <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
+                                                    <span style="border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </li>
+
+                                    <li ng-show="currentCommunity != null">
+                                        <div class="tab-title">
                                             <span>Community</span>
                                         </div>
 
@@ -61,8 +84,9 @@
                                             <!--end of row-->
 
                                         </div>
-
                                     </li>
+
+
                                     <li ng-show="currentCommunity == null" >
                                         <div class="tab-title">
                                             <span>Communities</span>
@@ -75,8 +99,8 @@
                                             </div><!--end of row-->
 
                                         </div>
-
                                     </li>
+
 
                                 </ul>
                             </div>
