@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var ConversationSchema = new mongoose.Schema({
 	profile: {type:mongoose.Schema.Types.Mixed, default:{}}, // author of the conversation - whoever started it.
 	board: {type:String, trim:true, default:''}, // the wall the conversation belongs to (Profile, Sample, etc)
+	community: {type:String, trim:true, default:''},
 	title: {type:String, trim:true, default:''},
 	text: {type:String, trim:true, default:''},
 	link: {type:String, trim:true, default:''},
@@ -19,6 +20,7 @@ ConversationSchema.methods.summary = function() {
 		'profile':this.profile,
 		'board':this.board,
 		'title':this.title,
+		'community':this.community,
 		'text':this.text,
 		'link':this.link,
 		'image':this.image,
