@@ -58,6 +58,7 @@ profileCtr.controller('ProfileController', ['$scope', 'accountService', 'general
 		}
 
 		$scope.conversation['board'] = $scope.publicProfile.id;
+		$scope.conversation['community'] = $scope.profile.communities[0];
 
 		RestService.post({resource:'conversation', id:null}, $scope.conversation, function(response){
 			if (response.confirmation != 'success')
