@@ -4,8 +4,8 @@
                         </h5>
                         <% conversation.text %>
                         <div style="text-align:right;padding:16px 0px 0px 16px;">
-                            <img align="left" style="width:44px;border-radius:22px;margin-right:16px;" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
+                            <img align="right" style="width:44px;border-radius:22px;" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
                             <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
-                            <span style="border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
+                            <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
                         </div>
                     </div>
