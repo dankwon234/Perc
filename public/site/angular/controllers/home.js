@@ -8,7 +8,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.reply = {'text':'', 'subject':'', 'sender':'', 'recpient':''};
 	$scope.visiblePosts = []; // only show 4 posts at a time
 	$scope.pages = [];
-    $scope.communities = ['','','','','','','','','','','','','','','','','','']; // need placeholders here to activate the js that animates the post panels
+    $scope.communities = null;
 
 
 	$scope.init = function(){
@@ -80,9 +80,17 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.currentCommunity['profiles'] = response.profiles;
-			console.log('fetchCommunityProfiles: '+JSON.stringify($scope.currentCommunity.profiles));
+			fetchCommunityConversations();
 		});
+	}
 
+	function fetchCommunityConversations(){
+		RestService.query({resource:'conversation', id:null, community:$scope.currentCommunity.id}, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.currentCommunity['conversations'] = response.conversations;
+		});
 	}
 
 	$scope.loadVisiblePosts = function(index){
