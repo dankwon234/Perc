@@ -122,6 +122,13 @@ app.directive('community', function() {
   };
 });
 
+app.directive('conversation', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      templateUrl: "/site/angular/directives/conversation.html"
+  };
+});
 
 app.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
