@@ -2,6 +2,7 @@ var postCtr = angular.module('ConversationModule', []);
 
 postCtr.controller('ConversationController', ['$scope', 'accountService', 'generalService', 'uploadService', 'RestService', function($scope, accountService, generalService, uploadService, RestService) {
 	$scope.conversation = null;
+	$scope.board = null;
 	$scope.comment = {'text':'', 'profile':'', 'thread':''};
 
 	
@@ -27,6 +28,16 @@ postCtr.controller('ConversationController', ['$scope', 'accountService', 'gener
 				return;
 			
 			$scope.conversation['comments'] = response.comments;
+			fetchConversationBoard();
+		});
+	}
+
+	function fetchConversationBoard(){
+		RestService.query({resource:'profile', id:$scope.conversation.board}, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.board = response.profile;
 		});
 	}
 

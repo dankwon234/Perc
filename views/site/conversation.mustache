@@ -59,11 +59,15 @@
                         <div>
                             <div class="widget">
                                 <div style="text-align:center;padding-top:48px;margin-bottom:12px">
-                                    <img style="width:120px;margin-bottom:20px;border-radius:60px" src="http://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
-                                    <h6 class="title mb0"><a href=""><% conversation.profile.name %></a></h6>
+                                    <a href="/site/profile/<% board.id %>">
+                                        <img style="width:120px;margin-bottom:20px;border-radius:60px" ng-src="https://media-service.appspot.com/site/images/<% board.image %>?crop=260" />
+                                    </a>
+                                    <h6 class="title mb0">
+                                        <a href="/site/profile/<% board.id %>"><% board.firstName %> <% board.lastName %></a>
+                                    </h6>
                                 </div>
                                 <p>
-                                    This conversation is posted on Dan Kwon's wall. To see more, click <a href="/site/profile/<% conversation.profile.id %>">here</a>.
+                                    This conversation is posted on <% board.firstName %> <% board.lastName %>'s wall. To see more, click <a href="/site/profile/<% board.id %>">here</a>.
                                 </p>
                             </div>
                             <!--end of widget-->
