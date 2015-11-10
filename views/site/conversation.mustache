@@ -63,7 +63,7 @@
                                         <img style="width:120px;margin-bottom:20px;border-radius:60px" ng-src="https://media-service.appspot.com/site/images/<% board.image %>?crop=260" />
                                     </a>
                                     <h6 class="title mb0">
-                                        <a href="/site/profile/<% board.id %>"><% board.firstName %> <% board.lastName %></a>
+                                        <a href="/site/profile/<% board.id %>"><% generalService.capitalize(board.firstName) %> <% generalService.capitalize(board.lastName) %></a>
                                     </h6>
                                 </div>
                                 <p>
