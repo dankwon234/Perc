@@ -25,8 +25,7 @@
                     </div>
 
 
-                    <div class="col-md-9">
-
+                    <div class="col-md-6">
                         <div class="row mb40" style="padding:0px 36px 0px 36px;margin-top:0px;margin-top:64px">
 
                             <conversation class="title mb24" style="padding:24px;border:1px solid #ddd;background:#f9f9f9">
@@ -53,10 +52,30 @@
                         </div>
                         <!--end of row-->
 
+                    </div>
+                    <!--end of 6 col-->
+
+                    <div class="col-md-3" style="padding:48px 24px 0px 48px;min-height:1400px;">
+                        <div>
+                            <div class="widget">
+                                <div style="text-align:center;padding-top:48px;margin-bottom:12px">
+                                    <img style="width:120px;margin-bottom:20px;border-radius:60px" src="http://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
+                                    <h6 class="title mb0"><a href=""><% conversation.profile.name %></a></h6>
+                                </div>
+                                <p>
+                                    This conversation is posted on Dan Kwon's wall. To see more, click <a href="/site/profile/<% conversation.profile.id %>">here</a>.
+                                </p>
+                            </div>
+                            <!--end of widget-->
+
+                            <hr />
+
+
+                        </div>
 
 
                     </div>
-                    <!--end of 9 col-->
+
 
                 </div>
 
