@@ -39,7 +39,8 @@ this.checkCurrentUser = function(req, res){
 
 this.handleLogin = function(req, res, pkg){
 	
-	Profile.find({'email':req.body.email}, function(err, profiles) {
+	var email = req.body.email.toLowerCase();
+	Profile.find({'email':email}, function(err, profiles) {
 		if (err) {
 			res.json({'confirmation':'fail', 'message':err.message});
 			return;
