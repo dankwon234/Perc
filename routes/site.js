@@ -54,7 +54,7 @@ router.get('/:page/:id', function(req, res, next) {
 			}
 
 			var url = 'http://www.getpercs.com/site/conversation/'+conversation.id;
-			var imageUrl = 'http://www.getpercs.com/site/img/iconRound.png';
+			var imageUrl = 'https://media-service.appspot.com/site/images/vAcKMGDo?crop=360';
 			var text = conversation.text;
 			if (text > 150)
 				text = text.substring(0, 150)+'...';
