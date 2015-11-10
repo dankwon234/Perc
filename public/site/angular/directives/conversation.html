@@ -1,12 +1,12 @@
-                    <div>
-                        <img align="right" style="width:72px;border-radius:36px;" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
-                        <h5 style="margin-right:16px;margin-bottom:6px;font-weight:600">
-                            <a href="/site/conversation/<% conversation.id %>"><% conversation.title %></a>
-                        </h5>
-                        <% conversation.text %>
-                        <div style="text-align:right;padding:16px 0px 0px 16px;">
-                            <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
-                            <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
-                            <span style="border:1px solid #ddd;background:#fff;padding:8px"><% conversation.profile.name %></span>
-                        </div>
-                    </div>
+<div>
+    <img align="right" style="width:72px;border-radius:36px;" src="https://media-service.appspot.com/site/images/<% conversation.profile.image %>?crop=260" />
+    <h5 style="margin-right:16px;margin-bottom:6px;font-weight:600">
+        <a href="/site/conversation/<% conversation.id %>"><% conversation.title %></a>
+    </h5>
+    <% conversation.text %>
+    <div style="text-align:right;padding:16px 0px 0px 16px;">
+        <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
+        <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
+        <span style="border:1px solid #ddd;background:#fff;padding:8px"><% conversation.profile.name %></span>
+    </div>
+</div>
