@@ -6,6 +6,7 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 	$scope.posts = null;
 	$scope.selectedPost = null;
 	$scope.reply = {'text':'', 'subject':'', 'sender':'', 'recpient':''};
+	$scope.conversation = {'text':'', 'profile':'', 'board':''};
 	$scope.visiblePosts = []; // only show 4 posts at a time
 	$scope.pages = [];
     $scope.communities = null;
@@ -179,8 +180,28 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 			$scope.unselectPost();
 			alert('Your message has been sent!');
 		});
-
   	}
+
+
+	$scope.startConversation = function(){
+		if ($scope.profile.id == null)
+			return;
+		
+		var name = $scope.profile.firstName+' '+$scope.profile.lastName;
+		$scope.conversation['profile'] = {'id':$scope.profile.id, 'name':name, 'image':$scope.profile.image};
+
+		$scope.conversation['board'] = $scope.profile.id;
+		$scope.conversation['community'] = $scope.profile.communities[0];
+
+		RestService.post({resource:'conversation', id:null}, $scope.conversation, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+			$scope.currentCommunity.conversations.unshift(response.conversation);
+			$scope.conversation = {'text':'', 'profile':'', 'board':''};
+		});
+	}
+
 	
 	
 	
