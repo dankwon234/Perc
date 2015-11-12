@@ -100,6 +100,19 @@ baseCtr.controller('BaseController', ['$scope', 'accountService', 'generalServic
 	
 	
 	
+	$scope.editConversation = function(conversation) {
+		conversation['isEditing'] = !conversation.isEditing;
+	}
+
+	$scope.updateConversation = function(conversation) {
+		conversation['isEditing'] = false;
+		RestService.put({resource:'conversation', id:conversation.id}, conversation, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
+		});
+	}
+
 	
 
 }]);
