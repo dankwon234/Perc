@@ -91,6 +91,23 @@ homeCtr.controller('HomeController', ['$scope', 'accountService', 'generalServic
 				return;
 			
 			$scope.currentCommunity['conversations'] = response.conversations;
+			for (var i=0; i<$scope.currentCommunity.conversations; i++){
+				var conversation = $scope.currentCommunity.conversations[i];
+				conversation['isEditing'] = false;
+			}
+		});
+	}
+
+	$scope.editConversation = function(conversation) {
+		conversation['isEditing'] = !conversation.isEditing;
+	}
+
+	$scope.updateConversation = function(conversation) {
+		conversation['isEditing'] = false;
+		RestService.put({resource:'conversation', id:conversation.id}, conversation, function(response){
+			if (response.confirmation != 'success')
+				return;
+			
 		});
 	}
 

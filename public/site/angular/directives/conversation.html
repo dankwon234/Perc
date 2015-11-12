@@ -3,10 +3,12 @@
     <h5 style="margin-right:16px;margin-bottom:6px;font-weight:600">
         <a href="/site/conversation/<% conversation.id %>"><% conversation.title %></a>
     </h5>
-    <% conversation.text %>
+    <p class="mb0" ng-show="conversation.isEditing != true"><% conversation.text %></p>
+    <textarea ng-blur="updateConversation(conversation)" ng-show="conversation.isEditing == true" class="form-control" style="padding:4px;margin-top:0px;width:84%" ng-model="conversation.text"></textarea>
     <div style="text-align:right;padding:16px 0px 0px 16px;">
-        <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
-        <span style="margin-right:16px;border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
+        <span ng-if="conversation.profile.id == profile.id" style="margin-right:6px;border:1px solid #ddd;background:#fff;padding:8px"><a ng-click="editConversation(conversation)" href="">Edit</a></span>
+        <span style="margin-right:6px;border:1px solid #ddd;background:#fff;padding:8px"><% conversation.numComments %> replies</span>
+        <span style="margin-right:6px;border:1px solid #ddd;background:#fff;padding:8px"><% generalService.formattedDate(conversation.timestamp) %></span>
         <span style="border:1px solid #ddd;background:#fff;padding:8px"><% conversation.profile.name %></span>
     </div>
 </div>
