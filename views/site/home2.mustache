@@ -15,7 +15,7 @@
 
                 <div class="row-fluid">
                     <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1200px">
-                        <div class="sidebar-nav-fixed affix">
+                        <div class="sidebar-nav-fixed affix bg-secondary">
                             <sidebar ng-if="currentCommunity == null"></sidebar>
                             <communitysidebar ng-if="currentCommunity != null"></communitysidebar>
                         </div>
@@ -110,11 +110,11 @@
                             </div>
                             <!--end of text tabs-->
 
+            {{>footer}}
 
                     </div>
                 </div>
 
-            {{>footer}}
             </section>
 
         </div>
