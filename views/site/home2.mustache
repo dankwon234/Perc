@@ -12,17 +12,14 @@
         <div class="main-container">
 
             <section style="border-top:1px solid #ddd;padding-top:0px;padding-bottom:0px">
-
                 <div class="row-fluid">
-                    <div class="col-md-3 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:48px 24px 0px 48px;min-height:1200px">
-                        <div class="sidebar-nav-fixed affix bg-secondary">
-                            <sidebar ng-if="currentCommunity == null"></sidebar>
-                            <communitysidebar ng-if="currentCommunity != null"></communitysidebar>
-                        </div>
+                    <div class="col-md-4 hidden-xs bg-secondary" style="border-right:1px solid #ddd;padding:0px 24px 0px 48px;min-height:1600px">
+                        <sidebar style="position:fixed;width:25%" ng-if="currentCommunity == null"></sidebar>
+                        <communitysidebar style="position:fixed" ng-if="currentCommunity != null"></communitysidebar>
                     </div>
 
 
-                    <div class="col-md-9 mb-xs-24">
+                    <div class="col-md-8 mb-xs-24">
                             <div class="tabbed-content text-tabs" style="padding:32px">
                                 <ul class="tabs">
                                     <li class="active">
@@ -110,12 +107,15 @@
                             </div>
                             <!--end of text tabs-->
 
-            {{>footer}}
 
                     </div>
+
                 </div>
 
             </section>
+
+            
+            {{>footer}}
 
         </div>
         {{>scripts}}
