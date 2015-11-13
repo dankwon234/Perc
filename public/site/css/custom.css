@@ -13,3 +13,8 @@
 .ng-cloak {
 	display:none;
 }
+
+
+.sidebar-nav-fixed {
+	width:20%;
+}
